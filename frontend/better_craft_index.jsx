@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Root from "./component/root"
+import configureStore from "./component/root"
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
