@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .logo{
+     color: #F15D1E;
+     font-size: 45px;
+     margin-left: 25px;
+     text-decoration: none;
+     font-family: "Guardian-EgypTT";
+     font-style: italic;
+ }

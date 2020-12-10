@@ -13,8 +13,8 @@ import {
 
 const App = () => (
   <div>
-    <header>
-      <h1>betterCrafts</h1>
+    <header className ="header">
+       <Link className ="logo" to="/">BetterCraft</Link>
       <GreetingContainer />
     </header>
     <Redirect to="/" />
