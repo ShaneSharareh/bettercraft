@@ -124,18 +124,18 @@ var receiveErrors = function receiveErrors(errors) {
 var createNewUser = function createNewUser(user) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.postUser(user).then(function (user) {
-      return dispatch(receiveCurrent(user)), function (err) {
-        return dispatch(receiveErrors(err.responseJSON));
-      };
+      return dispatch(receiveCurrent(user));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
 var login = function login(user) {
   return function (dispatch) {
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__.postSession(user).then(function (user) {
-      return dispatch(receiveCurrent(user)), function (err) {
-        return dispatch(receiveErrors(err.responseJSON));
-      };
+      return dispatch(receiveCurrent(user));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -225,12 +225,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("header", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     className: "logo",
     to: "/"
-  }, "BetterCraft"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_greeting_container__WEBPACK_IMPORTED_MODULE_1__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Redirect, {
+  }, "BetterCraft"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "header-right"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_greeting_container__WEBPACK_IMPORTED_MODULE_1__.default, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Redirect, {
     to: "/"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_4__.AuthRoute, {
     exact: true,
@@ -269,16 +271,16 @@ var Greeting = function Greeting(_ref) {
 
   var authLinks = function authLinks() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+      className: "session-header",
       to: "/login"
-    }, "Login"), "\xA0or\xA0", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
-      to: "/signup"
-    }, "Sign up!"));
+    }, "Login"));
   };
 
   var greetingMessage = function greetingMessage() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("hgroup", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Hello, ", currentUser.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "session-header",
       onClick: logout
-    }, "Log Out"));
+    }, "Log Out");
   };
 
   if (currentUser) {

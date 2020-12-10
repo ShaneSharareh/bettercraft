@@ -13,10 +13,12 @@ import {
 
 const App = () => (
   <div>
-    <header className ="header">
+    <div className ="header">
        <Link className ="logo" to="/">BetterCraft</Link>
-      <GreetingContainer />
-    </header>
+      <div className = "header-right">
+      <GreetingContainer/>
+      </div>
+    </div>
     <Redirect to="/" />
     <AuthRoute exact path="/signup" component={SignupContainer} />
     <AuthRoute exact path="/login" component={LoginContainer} />

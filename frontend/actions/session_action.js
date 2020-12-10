@@ -20,23 +20,21 @@ export const receiveErrors = errors => ({
 });
 
 export const createNewUser = user => dispatch =>(
-    APIUtil.postUser(user).then(user =>(
-        dispatch(receiveCurrent(user)),
-        err => (
-        dispatch(receiveErrors(err.responseJSON))
-        )
-        ))
-);
+    APIUtil.postUser(user).then(user =>{
+        return dispatch(receiveCurrent(user))},
+        err => {
+        return dispatch(receiveErrors(err.responseJSON))
+        }
+        ));
 
 
 export const login = user => dispatch =>(
-    APIUtil.postSession(user).then(user =>(
-        dispatch(receiveCurrent(user)),
-      err => (
-        dispatch(receiveErrors(err.responseJSON))
-        )
-        ))
-);
+    APIUtil.postSession(user).then(user =>{
+        return dispatch(receiveCurrent(user))},
+      err => {
+        return dispatch(receiveErrors(err.responseJSON))
+      }
+        ));
 
 export const logout = () => dispatch =>(
     APIUtil.deleteSession().then(user =>(

@@ -14,7 +14,12 @@
  *= require_self
  */
 
+.header{
+      overflow: hidden;
+      padding: 20px 10px;
+    background-color: #f1f1f1;
 
+}
  .logo{
      color: #F15D1E;
      font-size: 45px;
@@ -22,4 +27,30 @@
      text-decoration: none;
      font-family: "Guardian-EgypTT";
      font-style: italic;
+ }
+
+ .header-right {
+    float: right;
+ }
+
+ .session-header {
+     
+     text-align: center;
+     color: black;
+     padding: 12px;
+     text-decoration: none;
+     font-size: 25px;
+     line-height: 23px;
+     border-radius: 5px;
+ }
+
+ .session-header:hover {
+
+     background-color: #ddd
+ }
+
+ button.session-header{
+         outline:none;
+
+
  }
