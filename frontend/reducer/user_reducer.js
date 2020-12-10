@@ -1,11 +1,13 @@
 import {RECEIVE_CURRENT_USER} from '../actions/session_action'
 
-export default userReducer = (oldstate = {},actions) => {
+const  userReducer = (oldstate = {},action) => {
     Object.freeze(oldstate);
-    switch (actions.type) {
+    switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            return Object.assign({}, state, {[action.currentUser.id]: action.currentUser});
+            return Object.assign({}, oldstate, {[action.currentUser.id]: action.currentUser});
         default:
-            return oldState;
+            return oldstate;
     }
 };
+
+export default userReducer

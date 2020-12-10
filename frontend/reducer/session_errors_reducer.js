@@ -1,6 +1,6 @@
 import {RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER} from '../actions/session_action'
 
-export default (oldstate = [], action) => {
+const sessionErrorsReducer = (oldstate = [], action) => {
     Object.freeze(oldstate);
 
     switch (action.type){
@@ -9,6 +9,8 @@ export default (oldstate = [], action) => {
         case RECEIVE_CURRENT_USER:
             return[];
         default:
-            oldstate
+            return oldstate
     }
 }
+
+export default sessionErrorsReducer;
