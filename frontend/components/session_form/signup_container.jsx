@@ -1,14 +1,13 @@
 import {connect} from 'react-redux';
-import {createNewUser} from '../../actions/session_action';
+import {createNewUser, removeError} from '../../actions/session_action';
 import UserForm from './user_form'
 import { openModal, closeModal } from '../../actions/modal_actions';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
-    formType: 'Sign Up',
+    formType: 'Register',
   };
 };
 
@@ -17,10 +16,11 @@ const mapDispatchToProps = dispatch => {
     processUser: (user) => dispatch(createNewUser(user)),
     otherSession: (
       <button className ="signup-login-btn" onClick={() => dispatch(openModal('login'))}>
-        Login
+        Sign in
       </button>
     ),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    removeError: () => dispatch(removeError())
   };
 }
 

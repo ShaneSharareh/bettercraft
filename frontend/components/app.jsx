@@ -19,7 +19,7 @@ const App = () => (
     <div className ="header">
        <Link className ="logo" to="/">BetterCraft</Link>
        <div className="search-container">
-          <form action="/action_page.php">
+          <form className = "search-form"action="/action_page.php">
           <input type="text" placeholder="Search for anything" name="search"/>
           </form>
       </div>

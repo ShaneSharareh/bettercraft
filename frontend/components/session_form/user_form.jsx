@@ -11,6 +11,11 @@ class UserForm extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    componentWillUnmount() {
+        this.props.removeError()
+    }
+
     handleInput(field){
         return(e) =>{
             this.setState({
@@ -27,7 +32,7 @@ class UserForm extends React.Component {
 
     renderErrors() {
     return(
-      <ul>
+      <ul className="errors">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
             {error}
@@ -51,9 +56,7 @@ class UserForm extends React.Component {
                     </div>
                 <form className = "user-form" onSubmit={this.handleSubmit}>
             
-                    <br/>
                     {this.renderErrors()}
-                    <br/>
                     <p>
                       {/* Please {this.props.formType} or  */}
                     </p>
@@ -64,21 +67,18 @@ class UserForm extends React.Component {
                         placeholder = "Username"
                         value = {this.state.username}
                         onChange={this.handleInput('username')}/>
-                    <br/>
                     <div className = "input-headers">Email:</div> 
                         <input 
                         type="text" 
                         value = {this.state.email}
                         onChange={this.handleInput('email')}/>
-                    <br/>
 
                     <div className = "input-headers">Password:</div> 
                         <input 
                         type="password" 
                         value = {this.state.password}
                         onChange={this.handleInput('password')}/>
-                    <br/>
-
+                    <div></div>
                     <input className="submit-button" type="submit" value={this.props.formType}/>
                 </form>
 
