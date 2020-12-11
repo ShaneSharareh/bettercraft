@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 
-const Greeting = ({currentUser, logout}) => {
+const Greeting = ({currentUser, logout, openModal}) => {
     const authLinks = () =>(
         <nav >
-            <Link className="session-header" to="/login">Login</Link>
+        <button onClick={() => openModal('login')}>Login</button>
         </nav>
     );
     const greetingMessage = ()=> (

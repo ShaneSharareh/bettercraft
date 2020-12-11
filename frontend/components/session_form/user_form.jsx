@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 class UserForm extends React.Component {
     
     constructor(props) {
@@ -22,7 +22,7 @@ class UserForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.processUser(user)
+        this.props.processUser(user).then(this.props.closeModal);
     }
 
     renderErrors() {
@@ -40,33 +40,46 @@ class UserForm extends React.Component {
     render() {
         return (
             <div >  
-                <form onSubmit={this.handleSubmit}>
+                 <div className= "current-next-session">
+                       <div className ="form-type">
+                        <h4> {this.props.formType} </h4>
+                        </div>
+                       <div className ="form-next">
+                         {this.props.otherSession}
+                        </div>
+
+                    </div>
+                <form className = "user-form" onSubmit={this.handleSubmit}>
+            
                     <br/>
                     {this.renderErrors()}
                     <br/>
                     <p>
-                      Please {this.props.formType} or {this.props.navLink}
-
+                      {/* Please {this.props.formType} or  */}
                     </p>
-                    <label>Username: 
+                    <div onClick={this.props.closeModal} className="close-x">X</div>
+                    <div className = "input-headers">Username:</div> 
                         <input 
                         type="text" 
+                        placeholder = "Username"
                         value = {this.state.username}
                         onChange={this.handleInput('username')}/>
-                    </label>
-                    <label>Email: 
+                    <br/>
+                    <div className = "input-headers">Email:</div> 
                         <input 
                         type="text" 
                         value = {this.state.email}
                         onChange={this.handleInput('email')}/>
-                    </label>
-                    <label>Password: 
+                    <br/>
+
+                    <div className = "input-headers">Password:</div> 
                         <input 
                         type="password" 
                         value = {this.state.password}
                         onChange={this.handleInput('password')}/>
-                    </label>
-                    <input type="submit" value={this.props.formType}/>
+                    <br/>
+
+                    <input className="submit-button" type="submit" value={this.props.formType}/>
                 </form>
 
             </div>
@@ -74,4 +87,4 @@ class UserForm extends React.Component {
     }
 }
 
-export default UserForm;
+export default withRouter(UserForm);

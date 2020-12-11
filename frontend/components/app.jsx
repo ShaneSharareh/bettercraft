@@ -2,6 +2,8 @@ import React from 'react';
 import GreetingContainer from "./greeting_container";
 import SignupContainer from './session_form/signup_container'
 import LoginContainer  from './session_form/login_form_container'
+import Modal from './modal';
+
 import {AuthRoute, ProtectedRoute} from '../util/route_util'
 import {
   Route,
@@ -13,6 +15,7 @@ import {
 
 const App = () => (
   <div>
+   <Modal />
     <div className ="header">
        <Link className ="logo" to="/">BetterCraft</Link>
        <div className="search-container">
@@ -38,8 +41,8 @@ const App = () => (
       </ul>
     </div>
     <Redirect to="/" />
-    <AuthRoute exact path="/signup" component={SignupContainer} />
-    <AuthRoute exact path="/login" component={LoginContainer} />
+    {/* <AuthRoute exact path="/signup" component={SignupContainer} />
+    <AuthRoute exact path="/login" component={LoginContainer} /> */}
 
   </div>
 );
