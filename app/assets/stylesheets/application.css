@@ -198,10 +198,15 @@
 
 .signup-login-btn{
     background-color: rgb(253, 253, 253);
-    border-radius: 40%;
+    border-radius: 24px;
+    border: 2px solid rgb(22, 22, 22);
     padding: 10px;
-    font-style: bold;
-    font-size: 15px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: "Graphik Webfont";
+
+
 
 }
 
@@ -219,6 +224,28 @@
     padding-left: 60px;
     padding-right: 60px;
     text-align: center;
+    font-family: "Graphik Webfont";
+
+}
+
+.guest-login-btn{
+   margin-top: 15px;
+   background: rgb(234, 234, 234);
+   border: none;
+   text-decoration: none;
+   color: #090808;
+   cursor: pointer;
+   font-family: "Graphik Webfont";
+
+   border-radius: 24px;
+   font-weight: bold;
+   padding-top: 11px;
+   padding-bottom: 11px;
+   padding-left: 60px;
+   padding-right: 60px;
+   text-align: center;
+   border: .5px solid black;
+cursor: pointer;
 }
 
 .search-form{

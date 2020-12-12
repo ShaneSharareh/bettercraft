@@ -10,6 +10,8 @@ class UserForm extends React.Component {
             password: "",
         }
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleGuestLogin = this.handleGuestLogin.bind(this)
+
     }
 
     componentWillUnmount() {
@@ -28,6 +30,14 @@ class UserForm extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, this.state);
         this.props.processUser(user).then(this.props.closeModal);
+    }
+
+    handleGuestLogin(e){
+        this.props.processUser({
+            ['username']: "guest",
+            ['email']: "guest@example.com",
+            ['password']: "password",
+            }).then(this.props.closeModal);
     }
 
     renderErrors() {
@@ -61,10 +71,9 @@ class UserForm extends React.Component {
                       {/* Please {this.props.formType} or  */}
                     </p>
                     <div onClick={this.props.closeModal} className="close-x">X</div>
-                    <div className = "input-headers">Username:</div> 
+                    <div className = "input-headers" id="username-field">Username:</div> 
                         <input 
                         type="text" 
-                        placeholder = "Username"
                         value = {this.state.username}
                         onChange={this.handleInput('username')}/>
                     <div className = "input-headers">Email:</div> 
@@ -75,11 +84,15 @@ class UserForm extends React.Component {
 
                     <div className = "input-headers">Password:</div> 
                         <input 
-                        type="password" 
+                        type="password"
                         value = {this.state.password}
                         onChange={this.handleInput('password')}/>
-                    <div></div>
+                    <div>
                     <input className="submit-button" type="submit" value={this.props.formType}/>
+                    </div>
+                    <div>
+                        {this.props.formType === "Sign in"?  <button className ="guest-login-btn" onClick={this.handleGuestLogin}>Guest</button> : null}
+                    </div>
                 </form>
 
             </div>
