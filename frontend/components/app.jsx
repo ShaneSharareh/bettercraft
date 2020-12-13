@@ -2,6 +2,7 @@ import React from 'react';
 import GreetingContainer from "./greeting_container";
 import SignupContainer from './session_form/signup_container'
 import LoginContainer  from './session_form/login_form_container'
+import ProductIndexContainer from './products/product_index_container'
 import Modal from './modal';
 
 import {AuthRoute, ProtectedRoute} from '../util/route_util'
@@ -12,6 +13,8 @@ import {
   Link,
   HashRouter
 } from 'react-router-dom';
+
+
 
 const App = () => (
   <div>
@@ -39,6 +42,9 @@ const App = () => (
         <li><a href="#">Craft Supplies</a></li>
         <li><a href="#">Gifts & Gift Cards</a></li>
       </ul>
+    </div>
+    <div className="container">
+       <Route exact path="/" component={ProductIndexContainer} />
     </div>
     <Redirect to="/" />
     {/* <AuthRoute exact path="/signup" component={SignupContainer} />

@@ -14,6 +14,11 @@ class User < ApplicationRecord
         end
     end
 
+    has_many :products,
+    foreign_key: :seller_id,
+    class_name: :Product
+
+
     def password=(password)
         @password = password
 
