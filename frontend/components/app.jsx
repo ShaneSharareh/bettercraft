@@ -28,7 +28,7 @@ const App = () => (
       </div>
     </div>
     <div className = "nav">
-      <ul>
+      <ul className = "nav-ul">
         <li><a href="#"> Holiday Shop</a></li>
         <li><a href="#">Jewelry & Accessories</a></li>
         <li><a href="#">Clothing & Shoes</a></li>

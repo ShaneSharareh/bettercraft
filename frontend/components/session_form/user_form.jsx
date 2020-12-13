@@ -54,7 +54,7 @@ class UserForm extends React.Component {
 
     render() {
         return (
-            <div >  
+            <div>  
                  <div className= "current-next-session">
                        <div className ="form-type">
                         <h4> {this.props.formType} </h4>
@@ -62,38 +62,36 @@ class UserForm extends React.Component {
                        <div className ="form-next">
                          {this.props.otherSession}
                         </div>
-
                     </div>
-                <form className = "user-form" onSubmit={this.handleSubmit}>
-            
-                    {this.renderErrors()}
-                    <p>
-                      {/* Please {this.props.formType} or  */}
-                    </p>
-                    <div onClick={this.props.closeModal} className="close-x">X</div>
-                    <div className = "input-headers" id="username-field">Username:</div> 
-                        <input 
-                        type="text" 
-                        value = {this.state.username}
-                        onChange={this.handleInput('username')}/>
-                    <div className = "input-headers">Email:</div> 
-                        <input 
-                        type="text" 
-                        value = {this.state.email}
-                        onChange={this.handleInput('email')}/>
+                <div className = "user-form-parent">
+                    <form className = "user-form" onSubmit={this.handleSubmit}>
+                
+                        {this.renderErrors()}
+                        <div onClick={this.props.closeModal} className="close-x">X</div>
+                        <div className = "input-headers" id="username-field">Username:</div> 
+                            <input 
+                            type="text" 
+                            value = {this.state.username}
+                            onChange={this.handleInput('username')}/>
+                        <div className = "input-headers">Email:</div> 
+                            <input 
+                            type="text" 
+                            value = {this.state.email}
+                            onChange={this.handleInput('email')}/>
 
-                    <div className = "input-headers">Password:</div> 
+                        <div className = "input-headers">Password:</div> 
                         <input 
                         type="password"
                         value = {this.state.password}
                         onChange={this.handleInput('password')}/>
-                    <div>
-                    <input className="submit-button" type="submit" value={this.props.formType}/>
-                    </div>
-                    <div>
-                        {this.props.formType === "Sign in"?  <button className ="guest-login-btn" onClick={this.handleGuestLogin}>Guest</button> : null}
-                    </div>
-                </form>
+                        <div>
+                            <input className="submit-button" type="submit" value={this.props.formType}/>
+                        </div>
+                        <div>
+                            {this.props.formType === "Sign in"?  <button className ="guest-login-btn" onClick={this.handleGuestLogin}>Guest</button> : null}
+                        </div>
+                    </form>
+                </div>
 
             </div>
         )
