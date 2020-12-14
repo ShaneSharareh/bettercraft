@@ -8,7 +8,8 @@ const ProductsReducer = (oldstate = {}, action) =>{
         case RECEIVE_ALL_PRODUCTS:
             return action.products;
         case RECEIVE_PRODUCT:
-            nextState[action.product.id] = action.product;
+             nextState[action.product.id] = action.product;
+             return nextState;
         default:
             return oldstate
     }

@@ -3,6 +3,8 @@ import GreetingContainer from "./greeting_container";
 import SignupContainer from './session_form/signup_container'
 import LoginContainer  from './session_form/login_form_container'
 import ProductIndexContainer from './products/product_index_container'
+import ProductShowContainer from './products/product_show_container'
+
 import Modal from './modal';
 
 import {AuthRoute, ProtectedRoute} from '../util/route_util'
@@ -44,7 +46,10 @@ const App = () => (
       </ul>
     </div>
     <div className="container">
+      <Switch>
        <Route exact path="/" component={ProductIndexContainer} />
+      <Route exact path="/products/:productId" component={ProductShowContainer} />
+      </Switch>
     </div>
     <Redirect to="/" />
     {/* <AuthRoute exact path="/signup" component={SignupContainer} />

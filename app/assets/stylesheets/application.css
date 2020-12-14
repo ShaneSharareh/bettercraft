@@ -323,4 +323,20 @@ cursor: pointer;
 
 }
 
+.product-list{
+    display: flex;
+    flex-direction: row;
+
+    
+}
+
+.product-element{
+    display: grid;
+}
+
+.product-element img {
+    max-width: 100%;
+    max-height: 180px;
+    
+}
 
