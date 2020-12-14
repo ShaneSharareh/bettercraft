@@ -6,9 +6,5 @@
 # created_at	datetime	not null
 # updated_at	datetime	not null
 class Product < ApplicationRecord
-    validates :name, :description, :price, :seller_id, presence: true
-    
-belongs_to :seller,
-    foreign_key: :seller_id,
-    class_name: :User
+    validates :name, :description, :price, :store_name, :image_name, presence: true
 end
