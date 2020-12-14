@@ -352,19 +352,35 @@ cursor: pointer;
 
 }
 
-.product-element-title{
-    font-size: 14px;
-    color: grey;
+.product-element-title {
     text-decoration: none;
+
+}
+.product-element-title h3{
+    font-size: 14px;
+    color: #222;
+    margin-top: 10px;
 }
 
 .product-element-store {
-    font-size: 13px;
-    font-size: 15px;
+    font-size: 12px;
     color: rgb(94, 94, 94);
 }
 
-.product-show {
+.product-element-price {
+  font-family: "Graphik Webfont";
+  font-size: 16px;
+}
+
+.product-element p{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.product-show{
+    width: 50%;
     margin: 0 auto;
 }
 .product-show-content {
@@ -376,4 +392,11 @@ cursor: pointer;
     max-height: 100%;
     max-width: 100%;
     min-width: 0px;
+}
+
+.product-show-store{
+    font-family: "Graphik Webfont";
+    color: #222;
+    font-size: 18px;
+    margin: 0px 6px 0px 0px
 }

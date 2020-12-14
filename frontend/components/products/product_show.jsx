@@ -13,13 +13,13 @@ class ProductShow extends React.Component {
             product ?
             <div className="product-show">
                 <div className ="product-show-content">
-                    <img src={`/images/${product.image_name}`} alt=""/>
-                    <div className = "product-show-detail">
-                        <p>{product.store_name}</p>
-                        <h1>{product.name}</h1>
-                        <p>{product.description}</p>
-                        <p>{product.price}</p>
-
+                    <div className="product-show-image-container">
+                        <img src={`/images/${product.image_name}`} alt=""/>
+                    </div>
+                    <div className ="product-show-description-container">
+                        <p className = "product-show-store">{product.store_name}</p>
+                        <p className = "product-show-description">{product.description}</p>
+                        <p className = "product-show-price">{product.price}</p>
                         <Link to="/">Home</Link>
 
                     </div>
