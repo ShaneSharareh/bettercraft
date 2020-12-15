@@ -343,6 +343,8 @@ cursor: pointer;
 .product-element{
     display: grid;
     margin: 8px;
+    margin-top: 34px;
+
 }
 
 .product-element img {
@@ -364,7 +366,7 @@ cursor: pointer;
 
 .product-element-store {
     font-size: 12px;
-    color: rgb(94, 94, 94);
+    color: rgba(94, 94, 94, 0.76);
 }
 
 .product-element-price {
@@ -380,23 +382,71 @@ cursor: pointer;
 }
 
 .product-show{
-    width: 50%;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin-left: 165px;
+    margin-top: 38px;
 }
 .product-show-content {
     display: flex;
-    flex-direction: row;
+    margin: auto;
+    max-width: 1200px;
 }
 
 .product-show-content img {
-    max-height: 100%;
-    max-width: 100%;
+    height: 480px;
+    width: 480px;
     min-width: 0px;
 }
+
+.product-show-description {
+    
+    font-weight: 300;
+    font-size: 31px;
+    letter-spacing: 0.35px;
+    margin-top: 17px;
+
+}
+
+.product-show-info-container{
+    margin-left: 72px;
+    margin-top: 54px;
+    font-family: "Guardian-EgypTT",
+    serif;
+    }
+
+
+
+.product-show-info-container button{
+    margin-top: 15px;
+    background: rgb(22, 22, 22);
+    border: none;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 24px;
+    font-weight: bold;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 150px;
+    padding-right: 150px;
+    font-size: 23px;
+    /* height: 75px; */
+    /* width: 237px; */
+    text-align: center;
+    font-family: "Graphik Webfont";
+    }
+
 
 .product-show-store{
     font-family: "Graphik Webfont";
     color: #222;
-    font-size: 18px;
+    font-size: 24px;
     margin: 0px 6px 0px 0px
+}
+
+.product-show-price{
+    margin: 17px;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: bold;
 }

@@ -16,11 +16,12 @@ class ProductShow extends React.Component {
                     <div className="product-show-image-container">
                         <img src={`/images/${product.image_name}`} alt=""/>
                     </div>
-                    <div className ="product-show-description-container">
+                    <div className ="product-show-info-container">
                         <p className = "product-show-store">{product.store_name}</p>
-                        <p className = "product-show-description">{product.description}</p>
+                        <h1 className = "product-show-description">{product.description}</h1>
                         <p className = "product-show-price">{product.price}</p>
-                        <Link to="/">Home</Link>
+                        {/* <Link to="/">Home</Link> */}
+                    <button>Add To Cart</button>
 
                     </div>
                 </div>

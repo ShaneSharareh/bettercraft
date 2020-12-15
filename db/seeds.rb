@@ -65,3 +65,21 @@ product3 = Product.create!(
     store_name: "Frazier Beers", 
     image_name: 'beer-glass-cutter.jpeg'
 )
+
+product4 = Product.create!(
+    name: 'Camping Planner Sticker',
+    description: "Camping Trip Planner Stickers For Outdoor Fun",
+    price: '$2.00',
+    store_name: "twiceasniceletter", 
+    image_name: 'invitations.jpg'
+)
+
+product5 = Product.create!(
+    name: 'Pallet Sign',
+    description: "Pallet Sign, Pallet Art, Anniversary Gift, 5th Anniversary, Custom Photo Pallet, Pallet Wall Art, Rustic Home Decor, Picture Frame, Wood",
+    price: '$49.99',
+    store_name: "MyWoodPhoto", 
+    image_name: 'pallet-sign.jpg'
+)
+
+
