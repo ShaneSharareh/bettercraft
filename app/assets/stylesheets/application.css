@@ -238,8 +238,21 @@
     float: right;
     margin-top: 10px;
     margin-left: 63px;
+    outline: none;
+    border: none;
+
 
 }
+
+.form-next :active {
+    background: #eeeeee;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+    border: none;
+}
+
 
 .signup-login-btn{
     background-color: rgb(253, 253, 253);
