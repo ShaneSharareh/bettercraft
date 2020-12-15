@@ -66,18 +66,18 @@
 }
  .search-container input[type="text"]{
     outline: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 4px;
+    padding-bottom: 6px;
     padding-left: 30px;
     padding-right: 300px;
     height: 40px;
-    font-size: 20px;
+    font-size: 18px;
     color: #222222;
     font-family: inherit;
     background-color: #e4e2e2ea;
     border-radius: 35px;
     width: 100%;
-    margin-right: 15px;;
+    margin-right: 15px;
  }
 
 
@@ -270,7 +270,15 @@
     padding-right: 60px;
     text-align: center;
     font-family: "Graphik Webfont";
+}
 
+.submit-button:active {
+    background: #3b3b3b;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+    border: none;
 }
 
 .guest-login-btn{
@@ -281,7 +289,7 @@
    color: #090808;
    cursor: pointer;
    font-family: "Graphik Webfont";
-
+   outline: none;
    border-radius: 24px;
    font-weight: bold;
    padding-top: 11px;
@@ -290,7 +298,16 @@
    padding-right: 60px;
    text-align: center;
    border: .5px solid black;
-cursor: pointer;
+   cursor: pointer;
+}
+
+.guest-login-btn:active {
+    background: #949494;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
+    border: none;
 }
 
 .search-form{
@@ -434,6 +451,16 @@ cursor: pointer;
     /* width: 237px; */
     text-align: center;
     font-family: "Graphik Webfont";
+    outline: none;
+    }
+
+    .product-show-info-container button:active {
+        background: #3b3b3b;
+        -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+        -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+        box-shadow: inset 0px 0px 5px #c1c1c1;
+        outline: none;
+        border: none;
     }
 
 
