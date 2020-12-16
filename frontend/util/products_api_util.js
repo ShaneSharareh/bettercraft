@@ -11,3 +11,4 @@ export const fetchProduct = (productId) =>(
         method: 'GET',
     })
 );
+

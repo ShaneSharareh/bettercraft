@@ -14,6 +14,10 @@ guestUser = User.create(
     password: 'password'
 )
 
+Cart.create(
+    user_id: guestUser.id
+)
+
 
 # seller1 = User.create(
 #     username: 'Odoyle',
