@@ -18,7 +18,7 @@ class ProductShow extends React.Component {
                     </div>
                     <div className ="product-show-info-container">
                         <p className = "product-show-store">{product.store_name}</p>
-                        <h1 className = "product-show-description">{product.description}</h1>
+                        <p className = "product-show-description">{product.description}</p>
                         <p className = "product-show-price">{product.price}</p>
                         {/* <Link to="/">Home</Link> */}
                     <button>Add To Cart</button>

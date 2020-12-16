@@ -84,12 +84,14 @@ class UserForm extends React.Component {
                         type="password"
                         value = {this.state.password}
                         onChange={this.handleInput('password')}/>
-                        <div>
-                            <input className="submit-button" type="submit" value={this.props.formType}/>
-                        </div>
-                        <div>
-                            {this.props.formType === "Sign in"?  <button className ="guest-login-btn" onClick={this.handleGuestLogin}>Guest</button> : null}
-                        </div>
+                        <div className ="bottom-form">
+                            <div>
+                                <input className="submit-button" type="submit" value={this.props.formType}/>
+                            </div>
+                            <div>
+                                {this.props.formType === "Sign in"?  <button className ="guest-login-btn" onClick={this.handleGuestLogin}>Guest</button> : null}
+                            </div>
+                        </div>    
                     </form>
                 </div>
 
