@@ -8,14 +8,27 @@ class ProductIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchProducts();
+
     }
 
     render() {
+        let category = this.props.category
         const {products} = this.props;
         return(
             <div className="product-list">
                 {
-                        products.map(product =><ProductIndexItem key={product.id} product={product}/>)
+                     products.map(product => {
+                       if (category === "" || category === null){   
+                            return  <ProductIndexItem key={product.id} product={product}/>
+                       }else{
+                           if(category === product.category){
+                               return  <ProductIndexItem key={product.id} product={product}/>
+                           }
+
+                        }
+                        }
+                     
+                     )
                 }
             </div>
         )

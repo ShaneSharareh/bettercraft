@@ -24,8 +24,8 @@ const App = () => (
     <div className ="header">
        <Link className ="logo" to="/">BetterCraft</Link>
        <div className="search-container">
-          <form className = "search-form"action="/action_page.php">
-          <input type="text" placeholder="Search for anything" name="search"/>
+          <form className = "search-form">
+            <input className="search-holder" type="text" placeholder="Search for anything" name="search"/>
           </form>
       </div>
       <div className = "header-right">
@@ -34,21 +34,33 @@ const App = () => (
     </div>
     <div className = "nav">
       <ul className = "nav-ul">
-        <li><a href="#"> Holiday Shop</a></li>
-        <li><a href="#">Jewelry & Accessories</a></li>
-        <li><a href="#">Clothing & Shoes</a></li>
-        <li><a href="#">Home & Living</a></li>
-        <li><a href="#">Wedding & Party</a></li>
-        <li><a href="#">Toys & Entertainment</a></li>
-        <li><a href="#">Art & Collectibles</a></li>
-        <li><a href="#">Craft Supplies</a></li>
-        <li><a href="#">Gifts & Gift Cards</a></li>
+        <li><a href="#/Holiday-Shop"> Holiday Shop</a></li>
+        <li><a href="#/Jewelry-Accessories">Jewelry & Accessories</a></li>
+        <li><a href="#/Clothing-Shoes">Clothing & Shoes</a></li>
+        <li><a href="#/Home-Living">Home & Living</a></li>
+        <li><a href="#/Wedding-Party">Wedding & Party</a></li>
+        <li><a href="#/Toys-Entertainment">Toys & Entertainment</a></li>
+        <li><a href="#/Art-Collectibles">Art & Collectibles</a></li>
+        <li><a href="#/Craft-Supplies">Craft Supplies</a></li>
+        <li><a href="#/Gifts-Gift-Cards">Gifts & Gift Cards</a></li>
       </ul>
     </div>
+    
     <div className="container">
+     
       <Switch>
-       <Route exact path="/" component={ProductIndexContainer} />
-      <Route exact path="/products/:productId" component={ProductShowContainer} />
+       <Route exact path="/" component={ProductIndexContainer } />
+       <Route exact path="/Holiday-Shop" component={ProductIndexContainer} />
+       <Route exact path="/Jewelry-Accessories" component={ProductIndexContainer} />
+       <Route exact path="/Clothing-Shoes" component={ProductIndexContainer} />
+       <Route exact path="/Home-Living" component={ProductIndexContainer} />
+       <Route exact path="/Wedding-Party" component={ProductIndexContainer} />
+       <Route exact path="//Toys-Entertainment" component={ProductIndexContainer} />
+       <Route exact path="/Art-Collectibles" component={ProductIndexContainer} />
+       <Route exact path="/Craft-Supplies" component={ProductIndexContainer} />
+       <Route exact path="/Gifts-Gift-Cards" component={ProductIndexContainer} />
+       <Route exact path="/products/:productId" component={ProductShowContainer} />
+       <Route exact path="/products/:productId" component={ProductShowContainer} />
       </Switch>
     </div>
     <Redirect to="/" />

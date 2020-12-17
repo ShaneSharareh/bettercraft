@@ -51,7 +51,9 @@ product1 = Product.create!(
     description: 'We all need coffee, thats true, but what about a nice spoon to go with it? Start your morning right with a nice spoon dedicated to serve your every morning needs',
     price: '$9.50',
     store_name: "Augusto Productions",
-    image_name: "coffee-spoon.jpeg"
+    image_name: "coffee-spoon.jpeg",
+    category: "Home-Living",
+    shipping: "FREE"
 )
 
 product2 = Product.create!(
@@ -59,7 +61,9 @@ product2 = Product.create!(
     description: 'Nice customizable sign that you can use indoors or outside to be the coolest house on the block',
     price: '$12.00',
     store_name: "Alpha Omega Signs", 
-    image_name: "custom-wooded-sign.jpeg"
+    image_name: "custom-wooded-sign.jpeg", 
+    category: "Art-Collectibles",
+    shipping: "FREE"
 )
 
 product3 = Product.create!(
@@ -67,7 +71,9 @@ product3 = Product.create!(
     description: "You have heard the term 'Beauty from ashes', but what about beauty from glasses? BEER GLASSES! Be creative during quarantine and make something beautiful out of beer glasses",
     price: '$22.00',
     store_name: "Frazier Beers", 
-    image_name: 'beer-glass-cutter.jpeg'
+    image_name: 'beer-glass-cutter.jpeg',
+    category: "Craft-Supplies",
+    shipping: "PAID"
 )
 
 product4 = Product.create!(
@@ -75,7 +81,9 @@ product4 = Product.create!(
     description: "Camping Trip Planner Stickers For Outdoor Fun",
     price: '$2.00',
     store_name: "twiceasniceletter", 
-    image_name: 'invitations.jpg'
+    image_name: 'invitations.jpg',
+    category: "Craft-Supplies",
+    shipping: "FREE"
 )
 
 product5 = Product.create!(
@@ -83,7 +91,9 @@ product5 = Product.create!(
     description: "Pallet Sign, Pallet Art, Anniversary Gift, 5th Anniversary, Custom Photo Pallet, Pallet Wall Art, Rustic Home Decor, Picture Frame, Wood",
     price: '$49.99',
     store_name: "MyWoodPhoto", 
-    image_name: 'pallet-sign.jpg'
+    image_name: 'pallet-sign.jpg',
+    category: "Home-Living",
+    shipping: "PAID"
 )
 
 
