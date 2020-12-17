@@ -19,6 +19,10 @@ class User < ApplicationRecord
         foreign_key: :user_id, 
         class_name: :Cart
 
+    has_many :reviews, 
+        foreign_key: :reviewer_id, 
+        class_name: :Review
+
 
     def password=(password)
         @password = password

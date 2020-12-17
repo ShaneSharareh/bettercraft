@@ -13,4 +13,8 @@ class Product < ApplicationRecord
     has_one :carted_item, 
         foreign_key: :product_id, 
         class_name: :CartedItem
+    
+    has_many :reviews, 
+        foreign_key: :product_id,
+        class_name: :Review
 end
