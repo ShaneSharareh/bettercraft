@@ -1,24 +1,46 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# BetterCraft
 
-Things you may want to cover:
 
-* Ruby version
+BetterCraft is an Etsy clone that allows users to put their creative hobbies into marketing. Likewise, if a user is looking for products/gifts that have a creative touch to it, this is their site!
 
-* System dependencies
+![Landing](landing-page.png)
 
-* Configuration
+### [Demo](https://bettercraft.herokuapp.com/)
 
-* Database creation
 
-* Database initialization
+## Technological Skills used 
 
-* How to run the test suite
+* Rails
 
-* Services (job queues, cache servers, search engines, etc.)
+* JavaScript
 
-* Deployment instructions
+* React
 
-* ...
+* Redux
+
+## Features
+
+* User Signup/Login Using a modal
+
+* Guest User Login
+
+![Sign In](login-page.png)
+
+* Filtering Products Based On Product Category 
+
+![Filtering](filtering.png)
+
+* Add a review to a sellers product
+
+![AddingReview](add-review.png)
+
+
+## Features Being Worked on
+
+* Shopping Cart Functionality 
+
+* Editing/Deleting Reviews
+
+* Feature To Create A Store And Sell Items 
