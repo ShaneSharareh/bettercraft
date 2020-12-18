@@ -44,7 +44,7 @@ class ReviewForm extends React.Component {
                     />
                 </label>
                 <div>
-                <input className="add-comment-button" type="submit" value= "Add Comment"/>
+                <input className="add-comment-button" type="submit" value= "Add Review"/>
                     
                 </div>
             </form>
