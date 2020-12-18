@@ -12,3 +12,36 @@ export const fetchProduct = (productId) =>(
     })
 );
 
+export const createReview = review => (
+    $.ajax({
+        method: 'POST',
+        url: '/api/reviews',
+        data: {review}
+    })
+)
+
+export const  fetchReviews = productId => (
+    $.ajax({
+        url: `/api/products/${productId}/reviews`,
+        method: 'GET',
+        
+    })
+)
+
+export const updateReview = review => (
+    $.ajax({
+        url: `/api/reviews/${review.id}`,
+        type: 'PATCH',
+        data: {review: review}
+    })
+)
+
+export const deleteReview = reviewId =>{
+    return $.ajax({
+        url: `/api/reviews/${reportId}`,
+        type: 'DELETE'
+    })
+}
+
+
+

@@ -5,8 +5,11 @@ class Api::ProductsController < ApplicationController
     end
 
     def show
-        @product = Product.find(params[:id])
-         render '/api/products/show'
+        @product = Product.find_by(id: params[:id])
+        
+        if @product
+            render '/api/products/show'
+         end
     end
 
 end

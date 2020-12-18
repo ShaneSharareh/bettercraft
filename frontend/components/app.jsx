@@ -49,21 +49,20 @@ const App = () => (
     <div className="container">
      
       <Switch>
-       <Route exact path="/" component={ProductIndexContainer } />
        <Route exact path="/Holiday-Shop" component={ProductIndexContainer} />
        <Route exact path="/Jewelry-Accessories" component={ProductIndexContainer} />
        <Route exact path="/Clothing-Shoes" component={ProductIndexContainer} />
        <Route exact path="/Home-Living" component={ProductIndexContainer} />
        <Route exact path="/Wedding-Party" component={ProductIndexContainer} />
-       <Route exact path="//Toys-Entertainment" component={ProductIndexContainer} />
+       <Route exact path="/Toys-Entertainment" component={ProductIndexContainer} />
        <Route exact path="/Art-Collectibles" component={ProductIndexContainer} />
        <Route exact path="/Craft-Supplies" component={ProductIndexContainer} />
        <Route exact path="/Gifts-Gift-Cards" component={ProductIndexContainer} />
        <Route exact path="/products/:productId" component={ProductShowContainer} />
-       <Route exact path="/products/:productId" component={ProductShowContainer} />
+       <Route exact path="/" component={ProductIndexContainer } />
+       <Redirect to="/" />
       </Switch>
     </div>
-    <Redirect to="/" />
     {/* <AuthRoute exact path="/signup" component={SignupContainer} />
     <AuthRoute exact path="/login" component={LoginContainer} /> */}
 

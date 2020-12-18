@@ -14,7 +14,7 @@
  *= require_self
  */
 *{
-     font-family: "Graphik Webfont";
+    font-family: roboto;
 }
 .header{
     align-items: center;
@@ -237,7 +237,6 @@
 
 .form-type{
     float: left;
-    font-family: Graphik Webfont;
 
 }
 
@@ -268,12 +267,11 @@
    border: 2px solid rgb(56, 56, 56,);
    padding: 10px;
    font-size: 13px;
-   color: #4a4a4a;
+   color: #1b1a1a;
    font-weight: bolder;
    width: 88px;
    border-width: 2px;
    cursor: pointer;
-   font-family: "Graphik Webfont";
 }
 
 .submit-button{
@@ -290,7 +288,6 @@
     padding-left: 60px;
     padding-right: 60px;
     text-align: center;
-    font-family: "Graphik Webfont";
      width: 100%;
 
 }
@@ -310,7 +307,6 @@
    border: none;
    text-decoration: none;
    color: white;
-   font-family: "Graphik Webfont";
    outline: none;
    border-radius: 24px;
    font-weight: bold;
@@ -342,7 +338,6 @@
 .login-logout-btn{
     background: none;
     border: none;
-    font-family: "Graphik Webfont";
     font-weight: bold;
     color:rgb(73, 73, 73);
     font-size: 18px;
@@ -365,9 +360,12 @@
 }
 
 .product-list{
-    display: flex;
-    flex-direction: row;
-
+    justify-items: center;
+    /* display: flex;
+    flex-direction: row; */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: flex-start;
     
 }
 
@@ -391,7 +389,7 @@
 .product-element img {
     max-width: 100%;
     max-height: 180px;
-    border-width: 1px;
+    border-radius: 5px;
 
 }
 
@@ -411,7 +409,6 @@
 }
 
 .product-element-price {
-  font-family: "Graphik Webfont";
   font-size: 16px;
 }
 
@@ -473,11 +470,41 @@
     padding-left: 150px;
     padding-right: 150px;
     font-size: 16px;
-    /* height: 100%; */
-    width: 97%;
+    height: 12%;
+    width: 79%;
     /* text-align: center; */
-    font-family: "Graphik Webfont";
     outline: none;
+    }
+
+    * {
+        font-family: roboto;
+    }
+
+    user agent stylesheet button {
+        appearance: button;
+        -webkit-writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        color: -internal-light-dark(black, white);
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: center;
+        align-items: flex-start;
+        cursor: default;
+        background-color: -internal-light-dark(rgb(239, 239, 239), rgb(59, 59, 59));
+        box-sizing: border-box;
+        margin: 0em;
+        font: 400 13.3333px Arial;
+        padding: 1px 6px;
+        border-width: 2px;
+        border-style: outset;
+        border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+        border-image: initial;
+    }
+
     }
 
     .product-show-info-container button:active {
@@ -491,7 +518,6 @@
 
 
 .product-show-store{
-    font-family: "Graphik Webfont";
     color: #222;
     font-size: 16px;
     margin: 0px 6px 0px 0px
@@ -504,7 +530,83 @@
     font-weight: bold;
 }
 
+/* reviews header */
+.product-show-reviews-list{
+        border-top: 1px solid #8080805e;
+        border-width: 3px;
+        padding-top: 10px;
+    
+}
+
+.reviews-header{
+    font-size: 25px;
+    line-height: 42px;
+}
+
+.review-author{
+ font-weight: 300;
+ font-size: 13px;
+ line-height: 18px;
+ margin-bottom: 10px;
+ display: flex;
+ flex-direction: row;
+ justify-content: left;
+}
+
+.review-author a{
+    color: black;
+}
+
+.review-author img {
+    height: 20px;
+    width: auto;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.review-body{
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 30px;
+    margin-bottom: 16px;
+}
+
+.review-element{
+    margin-bottom: 10px;
+}
 
 .bottom-form{
     margin-left: 51px;
 }
+
+.create-review-box{
+   width: 471px;
+   height: 105px;
+   border: -4px solid #cccccc;
+   padding: 5px;
+   background-image: url(bg.gif);
+   background-position: bottom right;
+   background-repeat: no-repeat;
+   margin-top: 22px;
+   margin-left: 2px;
+   margin-bottom: 7px;
+}
+
+.add-comment-button{
+    margin-top: 2px;
+    background: rgb(22, 22, 22);
+    border: none;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 24px;
+    font-weight: bold;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-left: 32px;
+    padding-right: 60px;
+    text-align: center;
+    width: 13%;
+}
+
+

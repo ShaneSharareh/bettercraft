@@ -3,3 +3,4 @@
         json.partial! 'product', product: product
     end
 end
+
