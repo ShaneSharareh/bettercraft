@@ -44,3 +44,5 @@ BetterCraft is an Etsy clone that allows users to put their creative hobbies int
 * Editing/Deleting Reviews
 
 * Feature To Create A Store And Sell Items 
+
+* Raitings
