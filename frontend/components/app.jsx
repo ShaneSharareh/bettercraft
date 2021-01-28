@@ -4,10 +4,10 @@ import SignupContainer from './session_form/signup_container'
 import LoginContainer  from './session_form/login_form_container'
 import ProductIndexContainer from './products/product_index_container'
 import ProductShowContainer from './products/product_show_container'
-
 import Modal from './modal';
 
 import {AuthRoute, ProtectedRoute} from '../util/route_util'
+import CartedItemsContainer from './cart/carted_items_container'
 import {
   Route,
   Redirect,
@@ -29,7 +29,12 @@ const App = () => (
           </form>
       </div>
       <div className = "header-right">
-      <GreetingContainer/>
+        <GreetingContainer/>
+        <div className ="shopping-cart-icon-container">
+          <p><a href="#/cart"> &#128722; </a></p>
+
+        </div>
+
       </div>
     </div>
     <div className = "nav">
@@ -58,6 +63,8 @@ const App = () => (
        <Route exact path="/Art-Collectibles" component={ProductIndexContainer} />
        <Route exact path="/Craft-Supplies" component={ProductIndexContainer} />
        <Route exact path="/Gifts-Gift-Cards" component={ProductIndexContainer} />
+       <Route exact path="/cart" component={CartedItemsContainer} />
+
        <Route exact path="/products/:productId" component={ProductShowContainer} />
        <Route exact path="/" component={ProductIndexContainer } />
        <Redirect to="/" />

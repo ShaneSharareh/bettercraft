@@ -5,10 +5,20 @@ import CreateReviewFormContainer from '../Review/create_review_form_container'
 
 
 class ProductShow extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state ={
+            product_id: this.props.productId,
+        }
+        this.handleAddCart = this.handleAddCart.bind(this)
+    }
     componentDidMount(){
-        
-        this.props.fetchProduct(this.props.product.id);
-        this.props.fetchReviews(this.props.product.id);
+        this.props.fetchProduct(this.props.productId);
+        this.props.fetchReviews(this.props.productId);
+    }
+    handleAddCart(e){
+        e.preventDefault();
+        this.props.createCartedItem(this.state)
     }
     render() {
         const {product, reviews} = this.props;
@@ -25,7 +35,9 @@ class ProductShow extends React.Component {
                         <p className = "product-show-description">{product.description}</p>
                         <p className = "product-show-price">{product.price}</p>
                         {/* <Link to="/">Home</Link> */}
-                    <button>Add To Cart</button>
+                      <form onSubmit={this.handleAddCart}>
+                            <input className = "add-cart-btn" type="submit" value="Add to Cart"/>
+                          </form>
                     </div>
                 </div>
                     <div className ="product-show-review-container">
@@ -45,7 +57,7 @@ class ProductShow extends React.Component {
                     </div>
 
             </div>
-            : 
+            :
             <div></div>
         )
     }

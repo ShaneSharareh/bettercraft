@@ -1,10 +1,13 @@
-class Api::CartsController < ApplicationController
-#     def show
-#             cart = Cart.find_by(id: params[:id], user_id: params[:user_id])
-#             @products = Product.find_by(id: cart.carted_items.product_id)
-#             render :json => @products
-
+# class Api::CartsController < ApplicationController
+#  def create
+#         @cart = Cart.new()
+#         @cart.user_id = current_user.id 
+#         if @cart.save 
+#             render :show
+#         else 
+#             render json: @cart.errors.full_messages, status: 401
+#         end
 #     end
-# end
 
-end
+
+# end

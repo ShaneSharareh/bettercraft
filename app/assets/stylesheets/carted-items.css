@@ -1,0 +1,132 @@
+.cart-container{
+ padding-left: 38px;
+ padding-right: 38px;
+ display: flex;
+justify-content: space-between;
+
+}
+
+.carted-item-container{
+       margin: 30px 0px;
+
+ }
+
+.carted-item-body{
+    display:flex;
+     margin: auto;
+
+}
+
+.carted-items-container, .carted-item-container{
+    display: block;
+   
+    align-items: center;
+    }
+
+   .carted-item-description{
+        margin-left: 16px;
+        display:flex;
+        
+   }
+
+
+
+    .carted-item-name{
+       font-size: 18px;
+       font-weight: 300px;
+       letter-spacing: 0.35px;
+       color: #222;
+    }
+
+    .carted-item-image{
+        max-width: 200px;
+        max-height: 250px;
+    }
+
+    .carted-item-body{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .carted-item-description-text{
+        margin-left: 36px;
+    }
+
+
+   .quanity-per-product-container{
+       margin: 0px 10px;
+   }
+
+   .carted-item-header{
+       margin-bottom: 8px
+   }
+
+   .cart-count{
+        font-size: 30px;
+        letter-spacing: 0.5px;
+        margin: 15px 0px;
+   }
+
+
+   .payment-container{
+       border-radius: 15px;
+    border: 0px solid;
+       overflow: hidden;
+    padding: 8px 13px;
+    margin: 15px 0px;
+       box-shadow: 0 4px 20px rgba(34, 34, 34, 9);
+    height: fit-content;
+        width: 460px;
+
+
+   }
+
+   .payment-container-header{
+       font-size:20px;
+       font-weight: bold;
+               margin: 15px 0px;
+
+   }
+
+   .payment-container-radio-container{
+       display: flex;
+       flex-direction: column
+   }
+
+ 
+
+   .payment-container-radio-input{
+       display: flex;
+       
+   }
+
+
+   .card-list{
+       display: flex;
+       flex-direction: row;
+   }
+
+   .card-list-item{
+    color: #c66136;
+    margin: 0px 5px;
+    font-size: 20px;
+   }
+
+   .payment-container-radio-input{
+       margin: 5px 0px;
+   }
+
+   .payment-container-radio-input input[type="radio"]{
+           height: 30px;
+           width: 30px;
+           min-width: 30px;
+           left: 0;
+           top: 0;
+   }
+
+
+   .payment-cost-container{
+       display: flex;
+       justify-content: space-between;
+       
+   }

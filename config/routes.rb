@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     resources :users do 
-      #resources :carts, only: [:show]
     end
+    # resources :carts, only: [:create]
     resource :session, only: [:create, :destroy]
+    resources :carted_items, only: [:create, :index, :show]
     resources :products, only: [:index, :show] do 
-      resources :reviews, only: [:index]
-      #resources :carted_items, only: [:create]
+    resources :reviews, only: [:index]
     end
     resources :reviews, only: [:create, :update, :destroy]
-    # resources :carted_items, only: [:index, :destroy]
 
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,11 +1,18 @@
 class Api::UsersController < ApplicationController
+    
     def create
         @user = User.new(user_params);
         if @user.save 
-            Cart.create(user_id: @user.id)
+            puts"userID: #{@user.id}"
+           @cart = Cart.new(user_id: @user.id, quantity: 0)
+            if @cart.save! 
+                puts "saved to cart successfully"
+            else
+                puts "Error not adding to cart"
+            end
             login(@user)
             render "api/users/show"
-
+            
         else
             render json: @user.errors.full_messages, status: 422
 
