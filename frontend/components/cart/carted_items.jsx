@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import CartedItemShowContainer from './carted_item_show_container'
 class CartedItems extends React.Component {
     constructor(props) {
@@ -12,6 +13,8 @@ class CartedItems extends React.Component {
     }
 
     render() {
+        let total = 0;
+        let discount = 15;
         const {cartedItems} = this.props;
         
         return(
@@ -22,7 +25,7 @@ class CartedItems extends React.Component {
                 {
                     cartedItems ? 
                      Object.values(cartedItems).map((cartedItem,index) => {
-
+                            total +=  parseInt(cartedItem.price.split("$").join(""))
                             return(  <div className="carted-item-container" key={index}>
                                     
                                         <div className="carted-item-header">
@@ -34,7 +37,9 @@ class CartedItems extends React.Component {
                                                     <img className="carted-item-image" src={cartedItem.image_name}/>
                                                 </div>
                                                 <div className = "carted-item-description-text">
-                                               <h1 className="carted-item-name">{cartedItem.name}</h1>
+                                                    <Link className ="carted-item-name-link" to={`/products/${cartedItem.id}`}><h1 className="carted-item-name">{cartedItem.name}</h1></Link>
+                                                    <p className="carted-item-shipping"> {cartedItem.shipping==="FREE" ?  <span className="free-shipping-status-background"> Shipping: {cartedItem.shipping}</span> : <span className="paid-shipping-status-background"> Shipping: {cartedItem.shipping}</span> } </p>
+                                                    <button onClick={ ()=> this.props.removeCartedItem(cartedItem.id)} className ="delete-carted-item">Remove</button>
                                                <div className = "carted-item-description-footer">
                                                    </div>
                                                </div>
@@ -99,9 +104,30 @@ class CartedItems extends React.Component {
                                 </div>
                             </div>
                             <div className ="payment-cost-container">
-                                <p>Items Total: </p>
-                                <p>$25.00</p>
+                               <div className="cost-field">
+                                    <p>Items Total: </p>
+                                    <p>${total}</p>
+                               </div>
+                                <div className="cost-field">
+                                    <p>Discount: </p>
+                                    <p> -${15}</p>
+                               </div>
                             </div>
+                          <div className ="payment-sub-cost-container">
+                               <div className="cost-field">
+                                    <p className="payment-subtotal">Subtotal: </p>
+                                    <p>${total - 15}</p>
+                               </div>
+                               
+                            </div>
+
+                        <div className = "payment-footer">
+                            <button className ="cart-checkout-button">
+                                Proceed to Checkout
+                            </button>
+                             {/* <Link className = "product-element-title" to={`/products/${props.product.id}`}><h3>{props.product.name}</h3></Link>  */}
+                        </div>
+                         
                     </div>
                  </div>
             </div>

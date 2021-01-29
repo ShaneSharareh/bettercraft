@@ -30,12 +30,20 @@ class Api::CartedItemsController < ApplicationController
       @product = Cart.find_by(id: current_user.cart.id).cart_products.find_by(id: [:carted_item][:product_id])
     end
 
-    # def destroy 
-    #     @carted_item = CartedItem.find(params[:id]);
-    #     if @carted_item.destroy 
+    def destroy 
+        puts "ya params productID id: #{params[:id]}"
+        puts "okinawa cart_id #{current_user.cart.id}"
 
-    #     end
-    # end
+        @carted_item =  CartedItem.find_by(cart_id: current_user.cart.id ,product_id:params[:id])
+        if @carted_item && @carted_item.destroy 
+          @products = Cart.find_by(id: current_user.cart.id).cart_products
+
+          render '/api/carted_items/index'
+        else
+          puts "Delete not working..."#render json: ["not working"]
+
+        end
+    end
 
      def carted_items_params
         params.require(:cartedItem).permit(:product_id)

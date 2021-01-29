@@ -45,11 +45,13 @@ export const fetchCartedItem = (cartedItemID) => dispatch =>(
     .then(cartedItem => dispatch(receiveCartedItem(cartedItem)))
 )
 
-// export const removeCartedItem = (cartedID) => dispatch =>(
-//     APIUtil.deleteCartedItem().then(cartedItem =>(
-//         dispatch(removeCartedItem())
-//     )) 
-// );
+export const removeCartedItem = (cartedID) => dispatch =>(
+    CartedItemsAPIUtil.deleteCartedItem(cartedID) .then(cartedItems =>{
+        return dispatch(receiveCartedItems(cartedItems))},
+      err => {
+        return dispatch(receiveErrors(err.responseJSON))
+      }
+        ));
 
 // export const removeError =()=>{
 //   return{

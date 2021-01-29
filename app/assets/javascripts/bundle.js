@@ -95,7 +95,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "receiveErrors": () => /* binding */ receiveErrors,
 /* harmony export */   "createCartedItem": () => /* binding */ createCartedItem,
 /* harmony export */   "fetchCartedItems": () => /* binding */ fetchCartedItems,
-/* harmony export */   "fetchCartedItem": () => /* binding */ fetchCartedItem
+/* harmony export */   "fetchCartedItem": () => /* binding */ fetchCartedItem,
+/* harmony export */   "removeCartedItem": () => /* binding */ removeCartedItem
 /* harmony export */ });
 /* harmony import */ var _util_carted_items_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/carted_items_util */ "./frontend/util/carted_items_util.js");
 
@@ -148,12 +149,16 @@ var fetchCartedItem = function fetchCartedItem(cartedItemID) {
       return dispatch(receiveCartedItem(cartedItem));
     });
   };
-}; // export const removeCartedItem = (cartedID) => dispatch =>(
-//     APIUtil.deleteCartedItem().then(cartedItem =>(
-//         dispatch(removeCartedItem())
-//     )) 
-// );
-// export const removeError =()=>{
+};
+var removeCartedItem = function removeCartedItem(cartedID) {
+  return function (dispatch) {
+    return _util_carted_items_util__WEBPACK_IMPORTED_MODULE_0__.deleteCartedItem(cartedID).then(function (cartedItems) {
+      return dispatch(receiveCartedItems(cartedItems));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+}; // export const removeError =()=>{
 //   return{
 //     type: REMOVE_ERROR
 //   }
@@ -880,6 +885,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _carted_item_show_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carted_item_show_container */ "./frontend/components/cart/carted_item_show_container.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -906,6 +912,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var CartedItems = /*#__PURE__*/function (_React$Component) {
   _inherits(CartedItems, _React$Component);
 
@@ -925,6 +932,10 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this = this;
+
+      var total = 0;
+      var discount = 15;
       var cartedItems = this.props.cartedItems;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-container"
@@ -933,6 +944,7 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-count"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, Object.values(cartedItems).length, " items in your cart")), cartedItems ? Object.values(cartedItems).map(function (cartedItem, index) {
+        total += parseInt(cartedItem.price.split("$").join(""));
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "carted-item-container",
           key: index
@@ -951,9 +963,23 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
           src: cartedItem.image_name
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "carted-item-description-text"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+          className: "carted-item-name-link",
+          to: "/products/".concat(cartedItem.id)
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
           className: "carted-item-name"
-        }, cartedItem.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        }, cartedItem.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+          className: "carted-item-shipping"
+        }, " ", cartedItem.shipping === "FREE" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+          className: "free-shipping-status-background"
+        }, " Shipping: ", cartedItem.shipping) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+          className: "paid-shipping-status-background"
+        }, " Shipping: ", cartedItem.shipping), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+          onClick: function onClick() {
+            return _this.props.removeCartedItem(cartedItem.id);
+          },
+          className: "delete-carted-item"
+        }, "Remove"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "carted-item-description-footer"
         })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
           className: "quanity-per-product-container"
@@ -1043,7 +1069,21 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
         className: "text-muted fa fa-google-wallet fa-2x"
       }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "payment-cost-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Items Total: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$25.00")))));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cost-field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Items Total: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", total)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cost-field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Discount: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " -$", 15))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "payment-sub-cost-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "cost-field"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+        className: "payment-subtotal"
+      }, "Subtotal: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", total - 15))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "payment-footer"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "cart-checkout-button"
+      }, "Proceed to Checkout")))));
     }
   }]);
 
@@ -1082,6 +1122,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchCartedItems: function fetchCartedItems() {
       return dispatch((0,_actions_carted_item_actions__WEBPACK_IMPORTED_MODULE_1__.fetchCartedItems)());
+    },
+    removeCartedItem: function removeCartedItem(cartedItemID) {
+      return dispatch((0,_actions_carted_item_actions__WEBPACK_IMPORTED_MODULE_1__.removeCartedItem)(cartedItemID));
     }
   };
 };
@@ -2292,7 +2335,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "fetchCartedItems": () => /* binding */ fetchCartedItems,
 /* harmony export */   "createCartedItem": () => /* binding */ createCartedItem,
-/* harmony export */   "fetchCartedItem": () => /* binding */ fetchCartedItem
+/* harmony export */   "fetchCartedItem": () => /* binding */ fetchCartedItem,
+/* harmony export */   "deleteCartedItem": () => /* binding */ deleteCartedItem
 /* harmony export */ });
 var fetchCartedItems = function fetchCartedItems() {
   return $.ajax({
@@ -2313,6 +2357,12 @@ var fetchCartedItem = function fetchCartedItem(cartedItemID) {
   return $.ajax({
     url: "/api/carted_items/".concat(cartedItemID, "/"),
     method: 'GET'
+  });
+};
+var deleteCartedItem = function deleteCartedItem(cartedItemID) {
+  return $.ajax({
+    url: "/api/carted_items/".concat(cartedItemID),
+    type: 'DELETE'
   });
 };
 

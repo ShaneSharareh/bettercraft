@@ -20,3 +20,13 @@ export const fetchCartedItem = (cartedItemID) =>(
     })
 );
 
+
+export const deleteCartedItem = (cartedItemID) =>{
+    return $.ajax({
+        url: `/api/carted_items/${cartedItemID}`,
+        type: 'DELETE'
+    })
+}
+
+
+

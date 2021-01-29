@@ -38,6 +38,26 @@ justify-content: space-between;
        color: #222;
     }
 
+    .paid-shipping-status-background{
+        background-color: #fdebd2;
+        padding:5px;
+    }
+
+    .free-shipping-status-background {
+        background-color: #D4E9D7;
+        padding:5px;
+    }
+
+
+    .carted-item-name-link{
+        text-decoration: none;
+    }
+
+
+    .carted-item-shipping{
+        margin-top:10px;
+    }
+
     .carted-item-image{
         max-width: 200px;
         max-height: 250px;
@@ -125,8 +145,57 @@ justify-content: space-between;
    }
 
 
-   .payment-cost-container{
-       display: flex;
-       justify-content: space-between;
+   .payment-sub-cost-container{
        
+       border-top: rgba(117, 117, 117, 0.329) solid 1px;
+       margin-top: 8px;   
+   }
+
+    .cost-field{
+        display: flex;
+        justify-content: space-between;
+    }
+   .payment-cost-container p,
+   .payment-sub-cost-container p {
+       padding-top: 10px;
+       font-size: 19px;
+   }
+
+
+   .cart-checkout-button{
+       margin-top: 15px;
+       background: rgb(22, 22, 22);
+       border: none;
+       text-decoration: none;
+       color: white;
+       cursor: pointer;
+       border-radius: 24px;
+    font-weight: bold;
+       padding: 19px 5px;
+       font-size: 18px;
+       height: 12%;
+       width: 100%;
+       /* text-align: center; */
+       outline: none;
+        
+   }
+  
+   .payment-subtotal{
+       font-weight: bold;
+   }
+
+   .delete-carted-item{
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top:10px;
+        outline: none;
+        color: #c66136;
+
+   }
+
+   .delete-carted-item:active{
+           color: #6e2708;
+
    }
