@@ -6,7 +6,7 @@ class Api::CartedItemsController < ApplicationController
        @carted_item.cart_id = current_user.cart.id
        if @carted_item.save!
          puts "save successfully"
-         render '/api/carted_items/show'
+         render '/api/carted_items/index'
        else
          puts "save unsuccessful"
          render json: @carted_item.errors.full_messages, status: 422
@@ -27,12 +27,26 @@ class Api::CartedItemsController < ApplicationController
     end
 
     def show
-      @product = Cart.find_by(id: current_user.cart.id).cart_products.find_by(id: [:carted_item][:product_id])
+      # @cartedItem = CartItems.find_by(id: current_user.cart.id).cart_products.find_by(id: params[:id])
+      
+      #  render '/api/carted_items/show'
     end
 
+    def update
+      # @carted_item = CartedItem.find_by(cart_id: current_user.cart.id, product_id: params[:id])
+      # if @carted_item.update( quantity: params[:quantity])
+      #   puts "Updated #{params[:quantity]}"
+      #    @products = Cart.find_by(id: current_user.cart.id).cart_products
+      #    render '/api/carted_items/index'
+      # else     
+      #   render json: ['Item not could not be edited'], status: :not_found
+      # end
+    end
+
+
+
+
     def destroy 
-        puts "ya params productID id: #{params[:id]}"
-        puts "okinawa cart_id #{current_user.cart.id}"
 
         @carted_item =  CartedItem.find_by(cart_id: current_user.cart.id ,product_id:params[:id])
         if @carted_item && @carted_item.destroy 
@@ -48,5 +62,10 @@ class Api::CartedItemsController < ApplicationController
      def carted_items_params
         params.require(:cartedItem).permit(:product_id)
      end
+
+     def carted_items_update_quant_params
+        params.require(:cartedItem).permit(:quantity)
+     end
+
    end
 

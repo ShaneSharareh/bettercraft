@@ -7,7 +7,6 @@ const mapStateToProps = (state,ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchCartedItems: () => dispatch(fetchCartedItems()),
-    removeCartedItem: (cartedItemID) => dispatch(removeCartedItem(cartedItemID))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartedItems)

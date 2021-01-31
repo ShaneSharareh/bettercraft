@@ -30,3 +30,10 @@ export const deleteCartedItem = (cartedItemID) =>{
 
 
 
+export const updateCartedItem = (cartedItem) => {
+    return $.ajax({
+        url: `/api/carted_items/${cartedItem.id}`, 
+        type: 'PATCH',
+        data: {cartedItem}
+    })
+}

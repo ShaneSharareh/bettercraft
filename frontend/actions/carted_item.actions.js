@@ -53,6 +53,13 @@ export const removeCartedItem = (cartedID) => dispatch =>(
       }
         ));
 
+
+export const updateCartedItem = cartedItem => dispatch =>{
+    return CartedItemsAPIUtil.updateCartedItem(cartedItem)
+    .then(cartedItem =>  dispatch(receiveCartedItem(cartedItem)))
+}
+
+
 // export const removeError =()=>{
 //   return{
 //     type: REMOVE_ERROR
