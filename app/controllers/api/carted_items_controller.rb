@@ -2,8 +2,9 @@ class Api::CartedItemsController < ApplicationController
        
     def create 
        @carted_item = CartedItem.create(carted_items_params);
-       puts "cuurent user: #{current_user.cart}"
+      #  puts "current user: #{current_user.cart}"
        @carted_item.cart_id = current_user.cart.id
+       @carted_item.quantity = 1
        if @carted_item.save!
          puts "save successfully"
          render '/api/carted_items/index'
@@ -15,9 +16,9 @@ class Api::CartedItemsController < ApplicationController
    end
 
     def index
-         carted_items = CartedItem.where(cart_id: current_user.cart.id)
-         
-         @products = Cart.find_by(id: current_user.cart.id).cart_products
+         @carted_items = Cart.find_by(id: current_user.cart.id).cart_items
+         puts "cart items #{@carted_items}"
+        # @products = Cart.find_by(id: current_user.cart.id).cart_products
         #  carted_items.each do |carted_item|
         #     @products.push(Product.find_by(id: carted_item.product_id))
 
@@ -27,20 +28,21 @@ class Api::CartedItemsController < ApplicationController
     end
 
     def show
-      # @cartedItem = CartItems.find_by(id: current_user.cart.id).cart_products.find_by(id: params[:id])
+       @cartedItem = CartItems.find_by(id: current_user.cart.id).cart_products.find_by(id: params[:id])
       
-      #  render '/api/carted_items/show'
+        render '/api/carted_items/show'
     end
 
     def update
-      # @carted_item = CartedItem.find_by(cart_id: current_user.cart.id, product_id: params[:id])
-      # if @carted_item.update( quantity: params[:quantity])
-      #   puts "Updated #{params[:quantity]}"
-      #    @products = Cart.find_by(id: current_user.cart.id).cart_products
-      #    render '/api/carted_items/index'
-      # else     
-      #   render json: ['Item not could not be edited'], status: :not_found
-      # end
+      @carted_item = CartedItem.find_by(id: params[:id])
+      if @carted_item && @carted_item.update(quantity:(carted_items_update_quant_params["quantity"]).to_i)
+        puts "Updated #{params[:quantity]}"
+        @carted_items = Cart.find_by(id: current_user.cart.id).cart_items
+
+         render '/api/carted_items/index'
+      else     
+        render json: ['Item not could not be edited'], status: :not_found
+      end
     end
 
 
@@ -50,7 +52,7 @@ class Api::CartedItemsController < ApplicationController
 
         @carted_item =  CartedItem.find_by(cart_id: current_user.cart.id ,product_id:params[:id])
         if @carted_item && @carted_item.destroy 
-          @products = Cart.find_by(id: current_user.cart.id).cart_products
+         @carted_items = Cart.find_by(id: current_user.cart.id).cart_items
 
           render '/api/carted_items/index'
         else
@@ -60,7 +62,7 @@ class Api::CartedItemsController < ApplicationController
     end
 
      def carted_items_params
-        params.require(:cartedItem).permit(:product_id)
+        params.require(:cartedItem).permit(:product_id, :price)
      end
 
      def carted_items_update_quant_params

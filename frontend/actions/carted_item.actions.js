@@ -46,7 +46,7 @@ export const fetchCartedItem = (cartedItemID) => dispatch =>(
 )
 
 export const removeCartedItem = (cartedID) => dispatch =>(
-    CartedItemsAPIUtil.deleteCartedItem(cartedID) .then(cartedItems =>{
+    CartedItemsAPIUtil.deleteCartedItem(cartedID).then(cartedItems =>{
         return dispatch(receiveCartedItems(cartedItems))},
       err => {
         return dispatch(receiveErrors(err.responseJSON))
@@ -54,10 +54,13 @@ export const removeCartedItem = (cartedID) => dispatch =>(
         ));
 
 
-export const updateCartedItem = cartedItem => dispatch =>{
-    return CartedItemsAPIUtil.updateCartedItem(cartedItem)
-    .then(cartedItem =>  dispatch(receiveCartedItem(cartedItem)))
-}
+export const updateCartedItem = cartedItem => dispatch =>(
+     CartedItemsAPIUtil.updateCartedItem(cartedItem).then(cartedItems =>{
+        return dispatch(receiveCartedItems(cartedItems))},
+      err => {
+        return dispatch(receiveErrors(err.responseJSON))
+      }
+        ));
 
 
 // export const removeError =()=>{

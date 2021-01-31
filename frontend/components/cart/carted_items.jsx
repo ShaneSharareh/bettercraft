@@ -13,7 +13,7 @@ class CartedItems extends React.Component {
     }
 
     render() {
-        let total = 0;
+        let total = 0.00;
         let discount = 15;
         const {cartedItems} = this.props;
         
@@ -23,13 +23,15 @@ class CartedItems extends React.Component {
 
                 <div className ="cart-count"><h1>{Object.values(cartedItems).length} items in your cart</h1></div>
                 {
-                    cartedItems ? 
+                    cartedItems ?
                      Object.values(cartedItems).map((cartedItem,index) => {
+                            
                             console.log(cartedItem.id+" has $"+cartedItem.price)
-                            total +=  parseInt(cartedItem.price.split("$").join(""))
+                            total +=  parseFloat(cartedItem.price.split("$").join("")) * parseFloat(cartedItem.quantity)
                             return( 
                                       <div className="carted-item-container" key={index}>
-                                          <CartedItemShowContainer key={cartedItem.id} cartedItem={cartedItem}/>
+                                          
+                                           <CartedItemShowContainer key={cartedItem.id} productId={cartedItem.product_id} quantity={cartedItem.quantity} cartedItem={cartedItem}/> 
                                         </div>
                                     
                             // //             <div className="carted-item-header">
@@ -70,6 +72,7 @@ class CartedItems extends React.Component {
 
                                                      
                             // // 
+                            
                             )
                            }
 
@@ -111,7 +114,7 @@ class CartedItems extends React.Component {
                             <div className ="payment-cost-container">
                                <div className="cost-field">
                                     <p>Items Total: </p>
-                                    <p>${total}</p>
+                                    <p>${total.toFixed(2)}</p>
                                </div>
                                 <div className="cost-field">
                                     <p>Discount: </p>
@@ -121,7 +124,7 @@ class CartedItems extends React.Component {
                           <div className ="payment-sub-cost-container">
                                <div className="cost-field">
                                     <p className="payment-subtotal">Subtotal: </p>
-                                    <p>${total - 15}</p>
+                                    <p>${(total - 15).toFixed(2)}</p>
                                </div>
                                
                             </div>

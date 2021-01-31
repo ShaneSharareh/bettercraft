@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import ReviewIndexItem from '../Review/review_index_item';
 import CreateReviewFormContainer from '../Review/create_review_form_container'
+import 'regenerator-runtime/runtime'
 
 
 class ProductShow extends React.Component {
@@ -9,6 +10,7 @@ class ProductShow extends React.Component {
         super(props);
         this.state ={
             product_id: this.props.productId,
+            price: ""
         }
         this.handleAddCart = this.handleAddCart.bind(this)
     }
@@ -16,16 +18,21 @@ class ProductShow extends React.Component {
         this.props.fetchProduct(this.props.productId);
         this.props.fetchReviews(this.props.productId);
     }
-    handleAddCart(e){
+     handleAddCart(e){
         e.preventDefault();
+         this.setState({
+                price: this.props.product.price
+            })
         this.props.createCartedItem(this.state)
     }
     render() {
         const {product, reviews} = this.props;
         
         return(
+            
             product ?
             <div className="product-show">
+                {console.log("pug " + this.state.price)}
                 <div className ="product-show-content">
                     <div className="product-show-image-container">
                         <img src={`${product.image_name}`} alt=""/>
