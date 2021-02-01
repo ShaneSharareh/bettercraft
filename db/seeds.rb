@@ -230,7 +230,6 @@ product18 = Product.create!(
     category: "Clothing-Shoes",
     shipping: "FREE"
 )
-FREE
 product19 = Product.create!(
     name: "Toddlers Beanie",
     description: "Beanies for the little ones",

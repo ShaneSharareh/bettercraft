@@ -1,10 +1,21 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import CartedItemShowContainer from './carted_item_show_container'
+import OrderSummary from '../order_summary/order_summary'
+import {
+  Redirect,
+} from 'react-router-dom';
 class CartedItems extends React.Component {
     constructor(props) {
     super(props);
-
+    this.state ={
+            modalStatus: "modal modal-off",
+            confirmStatus: "on",
+            continueShoppingStatus: "continueShopping-off"
+        }
+        this.displayOrderSummary = this.displayOrderSummary.bind(this)
+        this.confirmOrder = this.confirmOrder.bind(this)
+        this.closeModal = this.closeModal.bind(this)
   }
 
     componentDidMount() {
@@ -12,9 +23,32 @@ class CartedItems extends React.Component {
 
     }
 
+
+    closeModal(){
+         this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
+
+        this.setState({
+                // modalStatus: "modal modal-on",
+                modalStatus: "modal modal-off",
+                // continueShoppingStatus: "continueShopping-on"
+            })
+    }
+    
+    
+     confirmOrder(){
+         this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
+        location.href='#/'
+    }
+
+    displayOrderSummary(){
+        this.setState({
+                modalStatus: "modal modal-on"
+            })
+
+    }
     render() {
         let total = 0.00;
-        let discount = 15;
+        let discount = 0.15;
         const {cartedItems} = this.props;
         
         return(
@@ -74,6 +108,7 @@ class CartedItems extends React.Component {
                             // // 
                             
                             )
+                            
                            }
 
                 
@@ -83,6 +118,30 @@ class CartedItems extends React.Component {
                 }
                 
             </div>
+              
+             <div id="myModal" className= {this.state.modalStatus}>
+                <div className="modal-content">
+                     <button onClick={this.closeModal} className="order-summary-close-btn">&times;</button>
+                        {this.state.modalStatus !== "modal modal-off" ?  
+                        
+                        
+                               <div className ="modal-component-container">
+                                 <OrderSummary subtotal={(total - (discount * total)).toFixed(2)} />
+                                 <button className="continue-shopping-btn" onClick={this.confirmOrder}>Continue Shopping</button>
+                            </div>
+
+                           : 
+                            <div> {/* <div>
+                                <p>Thank you for your oder</p>
+                                <button >ContinueShoppingStatus</button>
+                            </div> */}</div>
+                           
+                        } 
+
+                    </div>
+
+                </div>
+                {Object.values(this.props.cartedItems).length > 0 ?
                 <div className="payment-container">
                     <div className = "payment-container-header">
                         <h1>How you will pay</h1>
@@ -118,19 +177,19 @@ class CartedItems extends React.Component {
                                </div>
                                 <div className="cost-field">
                                     <p>Discount: </p>
-                                    <p> -${15}</p>
+                                    <p> {discount * 100.00}%</p>
                                </div>
                             </div>
                           <div className ="payment-sub-cost-container">
                                <div className="cost-field">
                                     <p className="payment-subtotal">Subtotal: </p>
-                                    <p>${(total - 15).toFixed(2)}</p>
+                                    <p>${(total - (discount *total)).toFixed(2)}</p>
                                </div>
                                
                             </div>
 
                         <div className = "payment-footer">
-                            <button className ="cart-checkout-button">
+                            <button onClick={this.displayOrderSummary} className ="cart-checkout-button">
                                 Proceed to Checkout
                             </button>
                              {/* <Link className = "product-element-title" to={`/products/${props.product.id}`}><h3>{props.product.name}</h3></Link>  */}
@@ -138,6 +197,9 @@ class CartedItems extends React.Component {
                          
                     </div>
                  </div>
+                 :
+                 <div></div>
+                }
             </div>
         )
     }

@@ -18,9 +18,9 @@ class ProductShow extends React.Component {
         this.props.fetchProduct(this.props.productId);
         this.props.fetchReviews(this.props.productId);
     }
-     handleAddCart(e){
+     async handleAddCart(e){
         e.preventDefault();
-         this.setState({
+        await this.setState({
                 price: this.props.product.price
             })
         this.props.createCartedItem(this.state)

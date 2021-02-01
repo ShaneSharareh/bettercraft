@@ -7,6 +7,7 @@ class Api::CartedItemsController < ApplicationController
        @carted_item.quantity = 1
        if @carted_item.save!
          puts "save successfully"
+         puts "Price: #{@carted_item.price}"
          render '/api/carted_items/index'
        else
          puts "save unsuccessful"

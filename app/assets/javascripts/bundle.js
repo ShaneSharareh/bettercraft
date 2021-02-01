@@ -79,6 +79,42 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 
 /***/ }),
 
+/***/ "./frontend/actions/cart.actions.js":
+/*!******************************************!*
+  !*** ./frontend/actions/cart.actions.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "RECEIVE_ALL_CARTED_ITEMS": () => /* binding */ RECEIVE_ALL_CARTED_ITEMS,
+/* harmony export */   "removeAllCartItems": () => /* binding */ removeAllCartItems
+/* harmony export */ });
+/* harmony import */ var _util_cart_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/cart.util */ "./frontend/util/cart.util.js");
+
+var RECEIVE_ALL_CARTED_ITEMS = "RECEIVE_ALL_CARTED_ITEMS";
+
+var receiveCartedItems = function receiveCartedItems(cartedItems) {
+  return {
+    type: RECEIVE_ALL_CARTED_ITEMS,
+    cartedItems: cartedItems
+  };
+};
+
+var removeAllCartItems = function removeAllCartItems(cartId) {
+  return function (dispatch) {
+    return _util_cart_util__WEBPACK_IMPORTED_MODULE_0__.deleteAllCartItems(cartId).then(function (cartedItems) {
+      return dispatch(receiveCartedItems(cartedItems));
+    }, function (err) {
+      return dispatch(receiveErrors(err.responseJSON));
+    });
+  };
+};
+;
+
+/***/ }),
+
 /***/ "./frontend/actions/carted_item.actions.js":
 /*!*************************************************!*
   !*** ./frontend/actions/carted_item.actions.js ***!
@@ -1007,6 +1043,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _carted_item_show_container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carted_item_show_container */ "./frontend/components/cart/carted_item_show_container.jsx");
+/* harmony import */ var _order_summary_order_summary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../order_summary/order_summary */ "./frontend/components/order_summary/order_summary.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1033,15 +1070,28 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var CartedItems = /*#__PURE__*/function (_React$Component) {
   _inherits(CartedItems, _React$Component);
 
   var _super = _createSuper(CartedItems);
 
   function CartedItems(props) {
+    var _this;
+
     _classCallCheck(this, CartedItems);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      modalStatus: "modal modal-off",
+      confirmStatus: "on",
+      continueShoppingStatus: "continueShopping-off"
+    };
+    _this.displayOrderSummary = _this.displayOrderSummary.bind(_assertThisInitialized(_this));
+    _this.confirmOrder = _this.confirmOrder.bind(_assertThisInitialized(_this));
+    _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(CartedItems, [{
@@ -1050,10 +1100,33 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
       this.props.fetchCartedItems();
     }
   }, {
+    key: "closeModal",
+    value: function closeModal() {
+      this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id);
+      this.setState({
+        // modalStatus: "modal modal-on",
+        modalStatus: "modal modal-off" // continueShoppingStatus: "continueShopping-on"
+
+      });
+    }
+  }, {
+    key: "confirmOrder",
+    value: function confirmOrder() {
+      this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id);
+      location.href = '#/';
+    }
+  }, {
+    key: "displayOrderSummary",
+    value: function displayOrderSummary() {
+      this.setState({
+        modalStatus: "modal modal-on"
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var total = 0.00;
-      var discount = 15;
+      var discount = 0.15;
       var cartedItems = this.props.cartedItems;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cart-container"
@@ -1108,6 +1181,21 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
         // // 
         ;
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        id: "myModal",
+        className: this.state.modalStatus
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "modal-content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.closeModal,
+        className: "order-summary-close-btn"
+      }, "\xD7"), this.state.modalStatus !== "modal modal-off" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "modal-component-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_order_summary_order_summary__WEBPACK_IMPORTED_MODULE_2__.default, {
+        subtotal: (total - discount * total).toFixed(2)
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "continue-shopping-btn",
+        onClick: this.confirmOrder
+      }, "Continue Shopping")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, " "))), Object.values(this.props.cartedItems).length > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "payment-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "payment-container-header"
@@ -1172,17 +1260,18 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
         className: "cost-field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Items Total: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", total.toFixed(2))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cost-field"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Discount: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " -$", 15))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Discount: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " ", discount * 100.00, "%"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "payment-sub-cost-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "cost-field"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "payment-subtotal"
-      }, "Subtotal: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", (total - 15).toFixed(2)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, "Subtotal: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", (total - discount * total).toFixed(2)))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "payment-footer"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.displayOrderSummary,
         className: "cart-checkout-button"
-      }, "Proceed to Checkout")))));
+      }, "Proceed to Checkout")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null));
     }
   }]);
 
@@ -1206,7 +1295,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_carted_item_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/carted_item.actions */ "./frontend/actions/carted_item.actions.js");
-/* harmony import */ var _carted_items__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./carted_items */ "./frontend/components/cart/carted_items.jsx");
+/* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/cart.actions */ "./frontend/actions/cart.actions.js");
+/* harmony import */ var _carted_items__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./carted_items */ "./frontend/components/cart/carted_items.jsx");
+
 
 
 
@@ -1224,11 +1315,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     updateCartedItem: function updateCartedItem(cartedItem) {
       return dispatch((0,_actions_carted_item_actions__WEBPACK_IMPORTED_MODULE_1__.updateCartedItem)(cartedItem));
+    },
+    removeAllCartItems: function removeAllCartItems(cartId) {
+      return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__.removeAllCartItems)(cartId));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_carted_items__WEBPACK_IMPORTED_MODULE_2__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_carted_items__WEBPACK_IMPORTED_MODULE_3__.default));
 
 /***/ }),
 
@@ -1393,6 +1487,117 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_2__.connect)(mapStateToProps, mapDispatchToProps)(Modal));
+
+/***/ }),
+
+/***/ "./frontend/components/order_summary/order_summary.jsx":
+/*!*************************************************************!*
+  !*** ./frontend/components/order_summary/order_summary.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var OrderSummary = /*#__PURE__*/function (_React$Component) {
+  _inherits(OrderSummary, _React$Component);
+
+  var _super = _createSuper(OrderSummary);
+
+  function OrderSummary(props) {
+    var _this;
+
+    _classCallCheck(this, OrderSummary);
+
+    _this = _super.call(this, props);
+    _this.getCurrDate = _this.getCurrDate.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(OrderSummary, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "getCurrDate",
+    value: function getCurrDate() {
+      var currDate = new Date();
+      var month = currDate.getUTCMonth() + 1; //months from 1-12
+
+      var day = currDate.getUTCDate();
+      var year = currDate.getUTCFullYear();
+      return month + "/" + day + "/" + year;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var shipping = 5.00;
+      var tax = 7.00;
+      return  true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-summary-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-summary-header"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "summary-header-color"
+      }, "Thank you for your order, John")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-summary-description"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-summary-info-labels"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Tracking Number:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Order Date:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-summary-info-values"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, Math.random().toString(36).substr(2, 9)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.getCurrDate())), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "print-btn",
+        onClick: window.print
+      }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+        className: "fa fa-print"
+      }), " Print "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-summary-instructions"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " Please keep the information above for your reference. We also sent a confirmation of the following to your email, John@gmail.com. Contact the store for further shipment instructions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "order-summary-price"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
+        className: "summary-header-color"
+      }, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "summary-totals"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Subtotal:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.props.subtotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "summary-totals"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Shipping:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", shipping)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "summary-totals"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Estimated Tax:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", tax)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "summary-totals"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Order Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", this.props.subtotal + shipping + tax)))) : /*#__PURE__*/0;
+    }
+  }]);
+
+  return OrderSummary;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrderSummary);
 
 /***/ }),
 
@@ -1575,6 +1780,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1628,13 +1837,35 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "handleAddCart",
-    value: function handleAddCart(e) {
-      e.preventDefault();
-      this.setState({
-        price: this.props.product.price
-      });
-      this.props.createCartedItem(this.state);
-    }
+    value: function () {
+      var _handleAddCart = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                e.preventDefault();
+                _context.next = 3;
+                return this.setState({
+                  price: this.props.product.price
+                });
+
+              case 3:
+                this.props.createCartedItem(this.state);
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function handleAddCart(_x) {
+        return _handleAddCart.apply(this, arguments);
+      }
+
+      return handleAddCart;
+    }()
   }, {
     key: "render",
     value: function render() {
@@ -2427,6 +2658,26 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/cart.util.js":
+/*!************************************!*
+  !*** ./frontend/util/cart.util.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "deleteAllCartItems": () => /* binding */ deleteAllCartItems
+/* harmony export */ });
+var deleteAllCartItems = function deleteAllCartItems(cartId) {
+  return $.ajax({
+    url: "/api/carts/".concat(cartId),
+    method: 'DELETE'
+  });
+};
 
 /***/ }),
 

@@ -1,0 +1,116 @@
+.modal-component-container{
+   display: flex;
+   flex-direction: column;
+   /* justify-content: center; */
+   align-items: center;
+   /* align-content: center; */
+}
+
+.contin-shopping-btn-container{
+    margin: 0;
+    position: absolute;
+    
+    left: 50%;
+   
+}
+
+.order-summary-close-btn{
+   background: none;
+   border: none;
+   font-size: 31px;
+   color: #BB481C;
+}
+
+.order-summary-container{
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-family:  "Guardian-EgypTT", serif;
+    font-size: 20px;
+
+}
+
+
+.order-summary-description{
+    display:flex;
+    justify-content: space-between;
+}
+
+.order-summary-header{
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 10px;
+
+    font-size: 28px;
+
+}
+
+.order-summary-info-labels,
+.order-summary-info-values {
+    color: #3f413f;
+    font-size: 20px;
+}
+
+
+.order-summary-info-labels p,
+.order-summary-info-values p {
+    padding: 5px;
+}
+
+.order-summary-price{
+    text-align: center;
+}
+
+.order-summary-price h1{
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.print-btn{
+        padding: 6px 18px;
+        font-size: 20px;
+        background-color: white;
+}
+
+.print-btn i{
+    color: #bb4817;
+    font-size: 18px;
+    font-style: bold;
+}
+
+
+.summary-header-color{
+    color: #bb4817;
+
+}
+
+.summary-totals{
+   display: flex;
+   justify-content: space-between;
+   margin: 9px 558px;
+}
+
+
+.continue-shopping-btn{
+    margin-top: 15px;
+    background: rgb(22, 22, 22);
+    border: none;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 24px;
+    font-weight: bold;
+    padding: 19px 5px;
+    font-size: 18px;
+    height: 12%;
+    width: 50%;
+    /* text-align: center; */
+    outline: none;
+}
+
+
+.anti-link-style {
+    color: white;
+    text-decoration: none;
+}
