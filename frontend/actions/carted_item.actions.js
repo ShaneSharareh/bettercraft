@@ -23,11 +23,11 @@ export const receiveErrors = errors => ({
 });
 
 export const createCartedItem = cartedItem => dispatch =>(
-    CartedItemsAPIUtil.createCartedItem(cartedItem).then(cartedItem =>{
-        return dispatch(receiveCartedItem(cartedItem))},
-        err => {
+     CartedItemsAPIUtil.createCartedItem(cartedItem).then(cartedItems =>{
+        return dispatch(receiveCartedItems(cartedItems))},
+      err => {
         return dispatch(receiveErrors(err.responseJSON))
-        }
+      }
         ));
 
 

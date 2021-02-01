@@ -23,7 +23,9 @@ class ProductShow extends React.Component {
         await this.setState({
                 price: this.props.product.price
             })
-        this.props.createCartedItem(this.state)
+        await this.props.createCartedItem(this.state)
+        location.href='#/cart'
+
     }
     render() {
         const {product, reviews} = this.props;

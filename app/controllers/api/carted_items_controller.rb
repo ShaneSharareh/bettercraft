@@ -8,6 +8,9 @@ class Api::CartedItemsController < ApplicationController
        if @carted_item.save!
          puts "save successfully"
          puts "Price: #{@carted_item.price}"
+         
+         @carted_items = Cart.find_by(id: current_user.cart.id).cart_items
+
          render '/api/carted_items/index'
        else
          puts "save unsuccessful"

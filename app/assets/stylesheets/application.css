@@ -548,14 +548,17 @@
  font-weight: 300;
  font-size: 13px;
  line-height: 18px;
- margin-bottom: 10px;
+ margin-bottom: 0px 18px;
  display: flex;
  flex-direction: row;
  justify-content: left;
+ margin: 15px 15px;
+
 }
 
 .review-author a{
     color: black;
+    font-size: 17px;
 }
 
 .review-author img {
@@ -568,8 +571,6 @@
 .review-body{
     font-size: 15px;
     font-weight: 300;
-    margin-left: 30px;
-    margin-bottom: 16px;
 }
 
 .review-element{

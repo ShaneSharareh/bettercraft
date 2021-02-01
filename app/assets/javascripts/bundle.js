@@ -164,8 +164,8 @@ var receiveErrors = function receiveErrors(errors) {
 };
 var createCartedItem = function createCartedItem(cartedItem) {
   return function (dispatch) {
-    return _util_carted_items_util__WEBPACK_IMPORTED_MODULE_0__.createCartedItem(cartedItem).then(function (cartedItem) {
-      return dispatch(receiveCartedItem(cartedItem));
+    return _util_carted_items_util__WEBPACK_IMPORTED_MODULE_0__.createCartedItem(cartedItem).then(function (cartedItems) {
+      return dispatch(receiveCartedItems(cartedItems));
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
     });
@@ -454,7 +454,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _actions_session_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_action */ "./frontend/actions/session_action.js");
+/* harmony import */ var _util_carted_items_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/carted_items_util */ "./frontend/util/carted_items_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -484,6 +486,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.login = _actions_session_action__WEBPACK_IMPORTED_MODULE_4__.login;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.createCartedItem = _util_carted_items_util__WEBPACK_IMPORTED_MODULE_5__.createCartedItem;
   var root = document.getElementById("root");
   react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__.default, {
     store: store
@@ -688,7 +691,8 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchCurrentUser(this.props.currentUser.id);
-    }
+    } // https://picsum.photos/id/237/200/300
+
   }, {
     key: "render",
     value: function render() {
@@ -699,11 +703,11 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "http://placekitten.com/".concat(this.props.currentUser.id, "?100x100"),
         alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
         href: "#"
-      }, this.props.currentUser.username)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, this.props.currentUser.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "review-body"
-      }, this.props.review.body));
+      }, this.props.review.body))));
     }
   }]);
 
@@ -1981,9 +1985,13 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
                 });
 
               case 3:
-                this.props.createCartedItem(this.state);
+                _context.next = 5;
+                return this.props.createCartedItem(this.state);
 
-              case 4:
+              case 5:
+                location.href = '#/cart';
+
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -2838,7 +2846,7 @@ var fetchCartedItems = function fetchCartedItems() {
   });
 };
 var createCartedItem = function createCartedItem(cartedItem) {
-  $.ajax({
+  return $.ajax({
     url: "/api/carted_items",
     method: 'POST',
     data: {
