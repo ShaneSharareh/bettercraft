@@ -30,6 +30,14 @@ export const createNewUser = user => dispatch =>(
         ));
 
 
+export const fetchCurrentUser = userId => dispatch =>(
+    APIUtil.receiveCurrentUser(userId).then(user =>{
+        return dispatch(receiveCurrent(user))},
+        err => {
+        return dispatch(receiveErrors(err.responseJSON))
+        }
+        ));
+
 export const login = user => dispatch =>(
     APIUtil.postSession(user).then(user =>{
         return dispatch(receiveCurrent(user))},

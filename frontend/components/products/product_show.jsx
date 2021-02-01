@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import ReviewIndexItem from '../Review/review_index_item';
+import ReviewIndexItemContainer from '../Review/review_index_item_container';
 import CreateReviewFormContainer from '../Review/create_review_form_container'
 import 'regenerator-runtime/runtime'
 
@@ -52,7 +52,7 @@ class ProductShow extends React.Component {
                         <div className = "product-show-reviews-list"></div>
                             {
                             reviews.map(review =>{
-                                    return <ReviewIndexItem review={review} productId={product.id}  key={review.id}/>
+                                    return <ReviewIndexItemContainer currentUserSession={this.props.currentUserSession} review={review} productId={product.id}  key={review.id}/>
                                 
                             }
                                 )

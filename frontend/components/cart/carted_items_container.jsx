@@ -3,7 +3,9 @@ import {fetchCartedItems, updateCartedItem} from '../../actions/carted_item.acti
 import {removeAllCartItems} from '../../actions/cart.actions'
 import CartedItems from './carted_items'
 const mapStateToProps = (state,ownProps) => ({
-   cartedItems:  state.entities.cartedItems
+   cartedItems:  state.entities.cartedItems,
+   currentUserSession: state.session,
+
 });
 
 const mapDispatchToProps = dispatch => ({

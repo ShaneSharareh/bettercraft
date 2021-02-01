@@ -8,7 +8,9 @@ import {receiveCurrent} from '../../actions/session_action'
 const mapStateToProps = (state, ownProps) => ({
         productId: ownProps.match.params.productId,
         product: state.entities.products[ownProps.match.params.productId],
-        reviews:  Object.values(state.entities.reviews)
+        reviews:  Object.values(state.entities.reviews),
+        currentUserSession: state.session
+
 });
 
 const mapDispatchToProps = dispatch => ({

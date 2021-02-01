@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import CartedItemShowContainer from './carted_item_show_container'
-import OrderSummary from '../order_summary/order_summary'
+import OrderSummaryContainer from '../order_summary/order_summary_container'
 import {
   Redirect,
 } from 'react-router-dom';
@@ -126,7 +126,8 @@ class CartedItems extends React.Component {
                         
                         
                                <div className ="modal-component-container">
-                                 <OrderSummary subtotal={(total - (discount * total)).toFixed(2)} />
+                                   {console.log(this.props.currentUserSession)}
+                                 <OrderSummaryContainer currentUserSession={this.props.currentUserSession} subtotal={(total - (discount * total)).toFixed(2)} />
                                  <button className="continue-shopping-btn" onClick={this.confirmOrder}>Continue Shopping</button>
                             </div>
 

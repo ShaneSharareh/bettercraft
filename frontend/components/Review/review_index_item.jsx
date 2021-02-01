@@ -1,16 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ReviewIndexItem = (props) => {
+class ReviewIndexItem extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+     componentDidMount(){
+      this.props.fetchCurrentUser(this.props.currentUser.id)
+    }
+
+    render() {
     return (
         <div className="review-element">
              <div className="review-author">
-                 <img src="https://i.pinimg.com/originals/b8/3a/bb/b83abbca857139568bb690c69d7bad68.jpg" alt=""/>
-                <a href="#" >annonymous</a>
+                 <img  src={`http://placekitten.com/${this.props.currentUser.id}?100x100`} alt=""/>
+                <a href="#" >{this.props.currentUser.username}</a>
             </div>
-            <p className="review-body">{props.review.body}</p>
+            <p className="review-body">{this.props.review.body}</p>
         </div>
-    );
+    )};
 };
 
 export default ReviewIndexItem;

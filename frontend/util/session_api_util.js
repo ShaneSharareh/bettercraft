@@ -6,6 +6,15 @@ export const postUser = user => (
     })
 );
 
+export const receiveCurrentUser = userId => (
+    $.ajax({
+        url: `/api/users/${userId}`,
+        method: 'GET'
+    })
+);
+
+
+
 export const postSession = user => (
     $.ajax({
         url: '/api/session',

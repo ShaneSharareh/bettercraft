@@ -6,7 +6,7 @@ class OrderSummary extends React.Component {
         this.getCurrDate = this.getCurrDate.bind(this)
     }
     componentDidMount(){
-      
+      this.props.fetchCurrentUser(this.props.currentUser.id)
     }
 
 
@@ -26,10 +26,10 @@ class OrderSummary extends React.Component {
         return(
             
             true ?
-              
+                
                 <div className ="order-summary-container">
                     <div className ="order-summary-header">
-                        <h1 className="summary-header-color">Thank you for your order, John</h1>
+                        <h1 className="summary-header-color">Thank you for your order, {this.props.currentUser.username}</h1>
                     </div>
                         <div className ="order-summary-description">
                             <div className="order-summary-info-labels">
@@ -46,7 +46,7 @@ class OrderSummary extends React.Component {
                         </div>
                         <div className="order-summary-instructions">
                             <p> Please keep the information above for your reference. We also sent a confirmation of the following to
-                                your email, John@gmail.com. Contact the store for further shipment instructions
+                                your email, {this.props.currentUser.email}. Contact the store for further shipment instructions
                             </p>
                         </div>
                         <div className ="order-summary-price">
