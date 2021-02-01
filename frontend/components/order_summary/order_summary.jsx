@@ -4,9 +4,14 @@ class OrderSummary extends React.Component {
     constructor(props) {
         super(props);
         this.getCurrDate = this.getCurrDate.bind(this)
+        this.state ={
+            subtotal: this.props.subtotal
+        }
     }
     componentDidMount(){
+     
       this.props.fetchCurrentUser(this.props.currentUser.id)
+      this.props.removeAllCartItems(this.props.cartId)
     }
 
 
@@ -54,7 +59,7 @@ class OrderSummary extends React.Component {
                         
                                 <div className="summary-totals">
                                 <p>Subtotal:</p>
-                                <p>{this.props.subtotal}</p>
+                                <p>{this.state.subtotal}</p>
                                 </div>
 
                                 <div className="summary-totals">
@@ -68,7 +73,7 @@ class OrderSummary extends React.Component {
                                 </div>
                                 <div className="summary-totals">
                                 <p>Order Total</p>
-                                 <p>${(this.props.subtotal + shipping + tax)}</p>
+                                 <p>${(this.state.subtotal + shipping + tax)}</p>
 
                                 </div>
                               </div>

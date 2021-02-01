@@ -25,7 +25,7 @@ class CartedItems extends React.Component {
 
 
     closeModal(){
-         this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
+        //  this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
 
         this.setState({
                 // modalStatus: "modal modal-on",
@@ -36,7 +36,7 @@ class CartedItems extends React.Component {
     
     
      confirmOrder(){
-         this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
+        //  this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
         location.href='#/'
     }
 
@@ -127,7 +127,7 @@ class CartedItems extends React.Component {
                         
                                <div className ="modal-component-container">
                                    {console.log(this.props.currentUserSession)}
-                                 <OrderSummaryContainer currentUserSession={this.props.currentUserSession} subtotal={(total - (discount * total)).toFixed(2)} />
+                                 <OrderSummaryContainer currentUserSession={this.props.currentUserSession} cartId = {this.props.cartedItems.cart_id} subtotal={(total - (discount * total)).toFixed(2)} />
                                  <button className="continue-shopping-btn" onClick={this.confirmOrder}>Continue Shopping</button>
                             </div>
 

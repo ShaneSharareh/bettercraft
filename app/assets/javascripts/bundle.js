@@ -1197,7 +1197,7 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "closeModal",
     value: function closeModal() {
-      this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id);
+      //  this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
       this.setState({
         // modalStatus: "modal modal-on",
         modalStatus: "modal modal-off" // continueShoppingStatus: "continueShopping-on"
@@ -1207,7 +1207,7 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "confirmOrder",
     value: function confirmOrder() {
-      this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id);
+      //  this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
       location.href = '#/';
     }
   }, {
@@ -1287,6 +1287,7 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
         className: "modal-component-container"
       }, console.log(this.props.currentUserSession), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_order_summary_order_summary_container__WEBPACK_IMPORTED_MODULE_2__.default, {
         currentUserSession: this.props.currentUserSession,
+        cartId: this.props.cartedItems.cart_id,
         subtotal: (total - discount * total).toFixed(2)
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         className: "continue-shopping-btn",
@@ -1635,6 +1636,9 @@ var OrderSummary = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.getCurrDate = _this.getCurrDate.bind(_assertThisInitialized(_this));
+    _this.state = {
+      subtotal: _this.props.subtotal
+    };
     return _this;
   }
 
@@ -1642,6 +1646,7 @@ var OrderSummary = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchCurrentUser(this.props.currentUser.id);
+      this.props.removeAllCartItems(this.props.cartId);
     }
   }, {
     key: "getCurrDate",
@@ -1683,13 +1688,13 @@ var OrderSummary = /*#__PURE__*/function (_React$Component) {
         className: "summary-header-color"
       }, "Order Summary"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "summary-totals"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Subtotal:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.props.subtotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Subtotal:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.state.subtotal)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "summary-totals"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Shipping:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", shipping)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "summary-totals"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Estimated Tax:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", tax)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "summary-totals"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Order Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", this.props.subtotal + shipping + tax)))) : /*#__PURE__*/0;
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Order Total"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "$", this.state.subtotal + shipping + tax)))) : /*#__PURE__*/0;
     }
   }]);
 
@@ -1713,7 +1718,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_session_action__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/session_action */ "./frontend/actions/session_action.js");
-/* harmony import */ var _order_summary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./order_summary */ "./frontend/components/order_summary/order_summary.jsx");
+/* harmony import */ var _actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/cart.actions */ "./frontend/actions/cart.actions.js");
+/* harmony import */ var _order_summary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./order_summary */ "./frontend/components/order_summary/order_summary.jsx");
+
 
 
 
@@ -1728,11 +1735,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchCurrentUser: function fetchCurrentUser(userId) {
       return dispatch((0,_actions_session_action__WEBPACK_IMPORTED_MODULE_1__.fetchCurrentUser)(userId));
+    },
+    removeAllCartItems: function removeAllCartItems(cartId) {
+      return dispatch((0,_actions_cart_actions__WEBPACK_IMPORTED_MODULE_2__.removeAllCartItems)(cartId));
     }
   };
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_order_summary__WEBPACK_IMPORTED_MODULE_2__.default));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mapStateToProps, mapDispatchToProps)(_order_summary__WEBPACK_IMPORTED_MODULE_3__.default));
 
 /***/ }),
 
