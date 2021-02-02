@@ -6,6 +6,7 @@ import { createReview } from '../../actions/product_actions';
 
 const mapStateToProps = (state) =>({
     currentUserId: state.session.currentUserId,
+    currentUserSession: state.session
 });
 
 const mapDispatchToProps = dispatch => ({

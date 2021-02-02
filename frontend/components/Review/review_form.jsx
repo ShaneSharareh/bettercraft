@@ -34,6 +34,7 @@ class ReviewForm extends React.Component {
     }
     render(){
         return ( 
+            this.props.currentUserSession.id !== null ?
             <form onSubmit={this.handleSubmit}>
             
                 <label>
@@ -48,6 +49,8 @@ class ReviewForm extends React.Component {
                     
                 </div>
             </form>
+            :
+            <div></div>
         )
     }
 }

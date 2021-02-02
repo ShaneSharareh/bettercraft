@@ -6,21 +6,29 @@ class ReviewIndexItem extends React.Component {
         super(props);
     }
      componentDidMount(){
-      this.props.fetchCurrentUser(this.props.currentUser.id)
+      this.props.fetchReviewUser(this.props.review.reviewer_id)
     }
 // https://picsum.photos/id/237/200/300
 
     render() {
+         console.log("test1")
+            console.log(this.props.reviewUser)
+             console.log("test2")
     return (
+        this.props.reviewUser ? 
+           
+
         <div className="review-element">
              <div className="review-author">
-                 <img  src={`http://placekitten.com/${this.props.currentUser.id}?100x100`} alt=""/>
+                 <img  src={`http://placekitten.com/${this.props.review.reviewer_id}?100x100`} alt=""/>
                <div>
-                    <a href="#" >{this.props.currentUser.username}</a>
+                    <a href="#" >{this.props.reviewUser.username}</a>
                     <p className="review-body">{this.props.review.body}</p>
                </div>
             </div>
         </div>
+        :
+        <div></div>
     )};
 };
 

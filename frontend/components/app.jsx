@@ -4,10 +4,14 @@ import SignupContainer from './session_form/signup_container'
 import LoginContainer  from './session_form/login_form_container'
 import ProductIndexContainer from './products/product_index_container'
 import ProductShowContainer from './products/product_show_container'
-import Modal from './modal';
+import SearchIndexContainer from './search/search_index_container'
 
+import Modal from './modal';
+import CartContainer from './cart/cart_container'
 import {AuthRoute, ProtectedRoute} from '../util/route_util'
 import CartedItemsContainer from './cart/carted_items_container'
+import Search from './search/search'
+
 import {
   Route,
   Redirect,
@@ -17,23 +21,16 @@ import {
 } from 'react-router-dom';
 
 
-
 const App = () => (
   <div>
    <Modal />
     <div className ="header">
        <Link className ="logo" to="/">BetterCraft</Link>
-       <div className="search-container">
-          <form className = "search-form">
-            <input className="search-holder" type="text" placeholder="Search for anything" name="search"/>
-          </form>
-      </div>
+      <Search/>
       <div className = "header-right">
         <GreetingContainer/>
-        <div className ="shopping-cart-icon-container">
-          <p><a href="#/cart"> &#128722; </a></p>
+          <CartContainer/>
 
-        </div>
 
       </div>
     </div>
@@ -54,6 +51,9 @@ const App = () => (
     <div className="container">
      
       <Switch>
+        {/* Search */}
+       <Route exact path="/search/:searchTerm" component={SearchIndexContainer} />
+       {/* Categories */}
        <Route exact path="/Holiday-Shop" component={ProductIndexContainer} />
        <Route exact path="/Jewelry-Accessories" component={ProductIndexContainer} />
        <Route exact path="/Clothing-Shoes" component={ProductIndexContainer} />
@@ -64,8 +64,9 @@ const App = () => (
        <Route exact path="/Craft-Supplies" component={ProductIndexContainer} />
        <Route exact path="/Gifts-Gift-Cards" component={ProductIndexContainer} />
        <Route exact path="/cart" component={CartedItemsContainer} />
-
+        {/* product show page */}
        <Route exact path="/products/:productId" component={ProductShowContainer} />
+       {/*  retrieve all items */}
        <Route exact path="/" component={ProductIndexContainer } />
        <Redirect to="/" />
       </Switch>

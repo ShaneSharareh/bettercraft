@@ -1,22 +1,31 @@
 class Api::CartedItemsController < ApplicationController
        
     def create 
-       @carted_item = CartedItem.create(carted_items_params);
-      #  puts "current user: #{current_user.cart}"
-       @carted_item.cart_id = current_user.cart.id
-       @carted_item.quantity = 1
-       if @carted_item.save!
-         puts "save successfully"
-         puts "Price: #{@carted_item.price}"
-         
-         @carted_items = Cart.find_by(id: current_user.cart.id).cart_items
+       
+     if CartedItem.find_by(product_id:carted_items_params["product_id"])
+        puts "error handled"  
+        render json: ["Item Already Added To Cart!"], status: 404
+          
+     else
+        @carted_item = CartedItem.new(carted_items_params);
+        #  puts "current user: #{current_user.cart}"
+        @carted_item.cart_id = current_user.cart.id
+        @carted_item.quantity = 1
 
-         render '/api/carted_items/index'
-       else
-         puts "save unsuccessful"
-         render json: @carted_item.errors.full_messages, status: 422
 
-       end 
+        if @carted_item.save!
+          puts "save successfully"
+          puts "Price: #{@carted_item.price}"
+          
+          @carted_items = Cart.find_by(id: current_user.cart.id).cart_items
+
+          render '/api/carted_items/index'
+        else
+          puts "save unsuccessful"
+          render json: @carted_item.errors.full_messages, status: 422
+
+        end
+    end
    end
 
     def index

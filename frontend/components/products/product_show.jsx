@@ -43,10 +43,13 @@ class ProductShow extends React.Component {
                         <p className = "product-show-store">{product.store_name}</p>
                         <p className = "product-show-description">{product.description}</p>
                         <p className = "product-show-price">{product.price}</p>
-                        {/* <Link to="/">Home</Link> */}
                       <form onSubmit={this.handleAddCart}>
-                            <input className = "add-cart-btn" type="submit" value="Add to Cart"/>
-                          </form>
+                        {this.props.currentUserSession.id === null ? 
+                            <button className = "add-cart-btn" >Please Sign In to Add to Cart</button>
+                                :
+                            <input className = "add-cart-btn" type="submit" value={this.props.cartedItemsErrors.length > 0 ? this.props.cartedItemsErrors :  "Add to Cart"}/>
+                        }
+                            </form>
                     </div>
                 </div>
                     <div className ="product-show-review-container">

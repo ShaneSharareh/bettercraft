@@ -1,12 +1,12 @@
 import {connect} from 'react-redux'
-import {fetchCurrentUser} from '../../actions/session_action'
+import {fetchReviewUser} from '../../actions/review_user.actions'
 import ReviewIndexItem from './review_index_item';
 const mapStateToProps = (state,props) => ({
-   currentUser:  state.entities.users[props.currentUserSession.id]
+   reviewUser:  state.entities.reviewUser[props.review.reviewer_id],
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId)),
+    fetchReviewUser: (reviewerId) => dispatch(fetchReviewUser(reviewerId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReviewIndexItem)

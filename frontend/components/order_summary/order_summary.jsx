@@ -73,7 +73,7 @@ class OrderSummary extends React.Component {
                                 </div>
                                 <div className="summary-totals">
                                 <p>Order Total</p>
-                                 <p>${(this.state.subtotal + shipping + tax)}</p>
+                                 <p>${(parseFloat(this.state.subtotal) + shipping + tax)}</p>
 
                                 </div>
                               </div>

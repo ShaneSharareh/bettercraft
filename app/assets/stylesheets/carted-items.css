@@ -5,7 +5,6 @@
 justify-content: space-between;
 
 }
-
 .carted-item-container{
        margin: 30px 0px;
 
@@ -256,3 +255,26 @@ justify-content: space-between;
     display: none;
 }
 
+
+.shopping-cart-icon-container{
+    display:flex 
+}
+
+.shopping-cart-count{
+    position: absolute;
+    top: -11px;
+    right: 31px;
+    font-size: 17px;
+    color: #080808;
+    background-color: #ff7d45;
+    border-radius: 52%;
+    padding: 0px 8px;
+    /* width: 1px; */
+    text-align: center;
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
+    }
+}
