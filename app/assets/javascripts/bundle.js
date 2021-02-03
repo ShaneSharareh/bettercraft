@@ -317,14 +317,13 @@ var receiveReview = function receiveReview(review) {
     type: RECEIVE_REVIEW,
     review: review
   };
-};
+}; // const removeReview = reviewId =>{
+//     return { 
+//         type: REMOVE_REVIEW,
+//         reviewId
+//     }
+// }
 
-var removeReport = function removeReport(reviewId) {
-  return {
-    type: REMOVE_REVIEW,
-    reviewId: reviewId
-  };
-};
 
 var fetchReviews = function fetchReviews(productId) {
   return function (dispatch) {
@@ -349,8 +348,8 @@ var updateReview = function updateReview(review) {
 };
 var deleteReview = function deleteReview(reviewId) {
   return function (dispatch) {
-    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__.updateReview(review).then(function (review) {
-      return dispatch(receiveReview(review));
+    return _util_products_api_util__WEBPACK_IMPORTED_MODULE_0__.deleteReview(reviewId).then(function (reviews) {
+      return dispatch(receiveReviews(reviews));
     });
   };
 };
@@ -691,6 +690,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -720,15 +721,61 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(ReviewIndexItem);
 
   function ReviewIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, ReviewIndexItem);
 
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    _this.state = {
+      editStatus: 'off',
+      body: _this.props.review.body
+    };
+    _this.enableEditField = _this.enableEditField.bind(_assertThisInitialized(_this));
+    _this.updateReview = _this.updateReview.bind(_assertThisInitialized(_this));
+    _this.update = _this.update.bind(_assertThisInitialized(_this));
+    _this.deleteReview = _this.deleteReview.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(ReviewIndexItem, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchReviewUser(this.props.review.reviewer_id);
+    }
+  }, {
+    key: "enableEditField",
+    value: function enableEditField() {
+      this.setState({
+        editStatus: 'on'
+      });
+    }
+  }, {
+    key: "updateReview",
+    value: function updateReview() {
+      //code 
+      this.setState({
+        editStatus: 'off'
+      });
+      this.props.updateReview({
+        id: this.props.review.id,
+        product_id: this.props.review.product_id,
+        reviewer_id: this.props.review.reviewer_id,
+        body: this.state.body
+      });
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
+    key: "deleteReview",
+    value: function deleteReview() {
+      this.props.deleteReview(this.props.review.id);
     } // https://picsum.photos/id/237/200/300
 
   }, {
@@ -746,9 +793,24 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
         alt: ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
         href: "#"
-      }, this.props.reviewUser.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+      }, this.props.reviewUser.username), this.state.editStatus === 'on' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        type: "text",
+        onChange: this.update('body'),
+        value: this.state.body
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.updateReview
+      }, "Update"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "review-body"
-      }, this.props.review.body)))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
+      }, this.props.review.body), this.props.review.reviewer_id === this.props.currentUser.id ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "review-author-footers"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.enableEditField,
+        className: "edit-review-btn"
+      }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        onClick: this.deleteReview,
+        on: true,
+        className: "edit-review-btn"
+      }, "Delete")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
     }
   }]);
 
@@ -774,13 +836,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_review_user_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/review_user.actions */ "./frontend/actions/review_user.actions.js");
 /* harmony import */ var _review_index_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./review_index_item */ "./frontend/components/Review/review_index_item.jsx");
+/* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
+
 
 
 
 
 var mapStateToProps = function mapStateToProps(state, props) {
   return {
-    reviewUser: state.entities.reviewUser[props.review.reviewer_id]
+    reviewUser: state.entities.reviewUser[props.review.reviewer_id],
+    currentUser: state.session
   };
 };
 
@@ -788,6 +853,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchReviewUser: function fetchReviewUser(reviewerId) {
       return dispatch((0,_actions_review_user_actions__WEBPACK_IMPORTED_MODULE_1__.fetchReviewUser)(reviewerId));
+    },
+    updateReview: function updateReview(review) {
+      return dispatch((0,_actions_product_actions__WEBPACK_IMPORTED_MODULE_3__.updateReview)(review));
+    },
+    deleteReview: function deleteReview(reviewId) {
+      return dispatch((0,_actions_product_actions__WEBPACK_IMPORTED_MODULE_3__.deleteReview)(reviewId));
     }
   };
 };
@@ -2732,7 +2803,7 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
     value: function handleGuestLogin(e) {
       var _this$props$processUs;
 
-      this.props.processUser((_this$props$processUs = {}, _defineProperty(_this$props$processUs, 'username', "guest"), _defineProperty(_this$props$processUs, 'email', "guest@example.com"), _defineProperty(_this$props$processUs, 'password', "password"), _this$props$processUs)).then(this.props.closeModal);
+      this.props.processUser((_this$props$processUs = {}, _defineProperty(_this$props$processUs, 'username', "guest1"), _defineProperty(_this$props$processUs, 'email', "guest1@example.com"), _defineProperty(_this$props$processUs, 'password', "password"), _this$props$processUs)).then(this.props.closeModal);
     }
   }, {
     key: "renderErrors",
@@ -3396,7 +3467,7 @@ var updateReview = function updateReview(review) {
 };
 var deleteReview = function deleteReview(reviewId) {
   return $.ajax({
-    url: "/api/reviews/".concat(reportId),
+    url: "/api/reviews/".concat(reviewId),
     type: 'DELETE'
   });
 };

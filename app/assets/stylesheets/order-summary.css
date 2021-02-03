@@ -25,8 +25,10 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    font-family:  "Guardian-EgypTT", serif;
+    font-family: "Guardian-EgypTT",
+    serif;
     font-size: 20px;
+    width: 100%;
 
 }
 
@@ -34,7 +36,12 @@
 .order-summary-description{
     display:flex;
     justify-content: space-between;
-}
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 100%;
+    }
+
 
 .order-summary-header{
     text-align: center;
@@ -60,6 +67,9 @@
 
 .order-summary-price{
     text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 100%;
 }
 
 .order-summary-price h1{
@@ -88,7 +98,8 @@
 .summary-totals{
    display: flex;
    justify-content: space-between;
-   margin: 9px 558px;
+   margin: 0 auto;
+   width: 50%;
 }
 
 
