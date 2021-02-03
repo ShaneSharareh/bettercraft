@@ -34,8 +34,8 @@ class UserForm extends React.Component {
 
     handleGuestLogin(e){
         this.props.processUser({
-            ['username']: "guest",
-            ['email']: "guest@example.com",
+            ['username']: "guest1",
+            ['email']: "guest1@example.com",
             ['password']: "password",
             }).then(this.props.closeModal);
     }
