@@ -734,6 +734,7 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
     _this.updateReview = _this.updateReview.bind(_assertThisInitialized(_this));
     _this.update = _this.update.bind(_assertThisInitialized(_this));
     _this.deleteReview = _this.deleteReview.bind(_assertThisInitialized(_this));
+    _this.getStringDate = _this.getStringDate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -776,6 +777,18 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
     key: "deleteReview",
     value: function deleteReview() {
       this.props.deleteReview(this.props.review.id);
+    }
+  }, {
+    key: "getStringDate",
+    value: function getStringDate(newDate) {
+      var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      var dateArr = newDate.split("-");
+      var year = dateArr[0];
+      var day = dateArr[2].substring(0, 2); //retrieve the month index to get the STRING of the month
+
+      var monthIndex = parseInt(dateArr[1]) - 1;
+      var month = monthNames[monthIndex];
+      return "".concat(month, " ").concat(day, ", ").concat(year);
     } // https://picsum.photos/id/237/200/300
 
   }, {
@@ -791,13 +804,17 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
         src: "http://placekitten.com/".concat(this.props.review.reviewer_id, "?100x100"),
         alt: ""
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+        className: "review-username-date-created"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", {
         href: "#"
-      }, this.props.reviewUser.username), this.state.editStatus === 'on' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+      }, this.props.reviewUser.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, this.getStringDate(this.props.review.created_at))), this.state.editStatus === 'on' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+        className: "review-edit-input",
         type: "text",
         onChange: this.update('body'),
         value: this.state.body
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+        className: "review-update-btn",
         onClick: this.updateReview
       }, "Update"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
         className: "review-body"
@@ -805,11 +822,11 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
         className: "review-author-footers"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.enableEditField,
-        className: "edit-review-btn"
+        className: "footer-review-btn"
       }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
         onClick: this.deleteReview,
         on: true,
-        className: "edit-review-btn"
+        className: "footer-review-btn"
       }, "Delete")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null))))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null);
     }
   }]);
@@ -907,7 +924,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal__WEBPACK_IMPORTED_MODULE_7__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "body-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_modal__WEBPACK_IMPORTED_MODULE_7__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link, {
     className: "logo",
@@ -940,7 +959,7 @@ var App = function App() {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     exact: true,
-    path: "/search/:searchTerm",
+    path: "/search/:searchedWord",
     component: _search_search_index_container__WEBPACK_IMPORTED_MODULE_6__.default
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
     exact: true,
@@ -1461,43 +1480,8 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
           productId: cartedItem.product_id,
           quantity: cartedItem.quantity,
           cartedItem: cartedItem
-        })) // //             <div className="carted-item-header">
-        // //                 <h1 className ="carted-item-storename">{cartedItem.store_name}</h1>
-        // //             </div> 
-        // //             <div className="carted-item-body">
-        // //                  <div className = "carted-item-description">
-        // //                     <div className = "carted-item-image-placeholder">
-        // //                         <img className="carted-item-image" src={cartedItem.image_name}/>
-        // //                     </div>
-        // //                     <div className = "carted-item-description-text">
-        // //                         <Link className ="carted-item-name-link" to={`/products/${cartedItem.id}`}><h1 className="carted-item-name">{cartedItem.name}</h1></Link>
-        // //                         <p className="carted-item-shipping"> {cartedItem.shipping==="FREE" ?  <span className="free-shipping-status-background"> Shipping: {cartedItem.shipping}</span> : <span className="paid-shipping-status-background"> Shipping: {cartedItem.shipping}</span> } </p>
-        // //                         <button onClick={ ()=> this.props.removeCartedItem(cartedItem.id)} className ="delete-carted-item">Remove</button>
-        // //                    <div className = "carted-item-description-footer">
-        // //                        </div>
-        // //                    </div>
-        // //                     <div className ="quanity-per-product-container">
-        // //                         <select className="quanity-per-product" name="quanity-per-product" id="quantity-per-product">
-        // //                             <option value="1">1</option>
-        // //                             <option value="2">2</option>
-        // //                             <option value="3">3</option>
-        // //                             <option value="4">4</option>
-        // //                             <option value="5">5</option>
-        // //                             <option value="6">6</option>
-        // //                             <option value="7">7</option>
-        // //                             <option value="8">8</option>
-        // //                             <option value="9">9</option>
-        // //                             <option value="10">10</option>
-        // //                             </select>
-        // //                     </div>
-        // //                 </div>
-        // //                    <p>{cartedItem.price}</p>
-        // //             </div> 
-        // //             </div>     
-        // // 
-        ;
+        }));
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        id: "myModal",
         className: this.state.modalStatus
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "modal-content"
@@ -1902,7 +1886,7 @@ var OrderSummary = /*#__PURE__*/function (_React$Component) {
       }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
         className: "fa fa-print"
       }), " Print "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "order-summary-instructions"
+        className: "order-summary-instructions-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, " Please keep the information above for your reference. We also sent a confirmation of the following to your email, ", this.props.currentUser.email, ". Contact the store for further shipment instructions")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "order-summary-price"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
@@ -2264,7 +2248,10 @@ var ProductShow = /*#__PURE__*/function (_React$Component) {
       }, product.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
         onSubmit: this.handleAddCart
       }, this.props.currentUserSession.id === null ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-        className: "add-cart-btn"
+        className: "add-cart-btn",
+        onClick: function onClick() {
+          return _this2.props.openModal('login');
+        }
       }, "Please Sign In to Add to Cart") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
         className: "add-cart-btn",
         type: "submit",
@@ -2313,6 +2300,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_product_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/product_actions */ "./frontend/actions/product_actions.js");
 /* harmony import */ var _actions_carted_item_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/carted_item.actions */ "./frontend/actions/carted_item.actions.js");
 /* harmony import */ var _actions_session_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/session_action */ "./frontend/actions/session_action.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 
 
@@ -2339,6 +2328,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createCartedItem: function createCartedItem(cartedItem) {
       return dispatch((0,_actions_carted_item_actions__WEBPACK_IMPORTED_MODULE_3__.createCartedItem)(cartedItem));
+    },
+    openModal: function openModal(modal) {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_5__.openModal)(modal));
     }
   };
 };
@@ -2531,23 +2523,19 @@ var SearchIndex = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.props.searchTerm);
-      var searchTerm = this.props.searchTerm;
+      console.log(this.props.searchedWord);
+      var searchedWord = this.props.searchedWord;
       var products = this.props.products;
       var notFoundCount = 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "product-list"
       }, products.map(function (product, index) {
-        {
-          console.log(product.name + " === " + searchTerm + ": " + product.name.includes(searchTerm));
-        }
-
-        if (searchTerm === "" || searchTerm == null) {
+        if (searchedWord === "" || searchedWord == null) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_products_product_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
             key: product.id,
             product: product
           });
-        } else if (product.name.toUpperCase().includes(searchTerm.toUpperCase()) || product.store_name.toUpperCase().includes(searchTerm.toUpperCase())) {
+        } else if (product.name.toUpperCase().includes(searchedWord.toUpperCase()) || product.store_name.toUpperCase().includes(searchedWord.toUpperCase())) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_products_product_index_item__WEBPACK_IMPORTED_MODULE_1__.default, {
             key: product.id,
             product: product
@@ -2557,7 +2545,7 @@ var SearchIndex = /*#__PURE__*/function (_React$Component) {
         }
       })), products.length === notFoundCount ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "no-results-container"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "We couldn't find any results for ", searchTerm)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "We couldn't find any results for ", searchedWord)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null));
     }
   }]);
 
@@ -2589,7 +2577,7 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
     products: Object.values(state.entities.products),
-    searchTerm: ownProps.match.params.searchTerm
+    searchedWord: ownProps.match.params.searchedWord
   };
 };
 

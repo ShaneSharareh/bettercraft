@@ -12,6 +12,7 @@ class ReviewIndexItem extends React.Component {
         this.updateReview = this.updateReview.bind(this)
         this.update = this.update.bind(this)
         this.deleteReview = this.deleteReview.bind(this)
+        this.getStringDate = this.getStringDate.bind(this)
     }
      componentDidMount(){
       this.props.fetchReviewUser(this.props.review.reviewer_id)
@@ -38,6 +39,22 @@ class ReviewIndexItem extends React.Component {
         this.props.deleteReview(this.props.review.id)
     }
 
+    getStringDate(newDate){
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+        const dateArr = newDate.split("-");
+        const year = dateArr[0];
+        const day = dateArr[2].substring(0, 2);
+        //retrieve the month index to get the STRING of the month
+        const monthIndex = parseInt(dateArr[1]) - 1;
+        const month = monthNames[monthIndex];
+
+        return `${month} ${day}, ${year}`
+
+
+    }
+
 // https://picsum.photos/id/237/200/300
 
     render() {
@@ -52,13 +69,17 @@ class ReviewIndexItem extends React.Component {
              <div className="review-author">
                  <img  src={`http://placekitten.com/${this.props.review.reviewer_id}?100x100`} alt=""/>
                <div>
+                   <div className="review-username-date-created">
                     <a href="#" >{this.props.reviewUser.username}</a>
+                    <p>{this.getStringDate(this.props.review.created_at)}</p>
+
+                   </div>
                     {
                         this.state.editStatus === 'on'?
                             <div>
                                 <form>
-                                    <input type="text" onChange = {this.update('body')} value ={this.state.body}/>
-                                    <button onClick={this.updateReview}>Update</button>
+                                    <input className="review-edit-input" type="text" onChange = {this.update('body')} value ={this.state.body}/>
+                                    <button className ="review-update-btn" onClick={this.updateReview}>Update</button>
                                 </form>
                             </div>
                             :
@@ -66,8 +87,8 @@ class ReviewIndexItem extends React.Component {
                                 <p className="review-body">{this.props.review.body}</p>
                                 {this.props.review.reviewer_id === this.props.currentUser.id?
                                 <div className="review-author-footers">
-                                 <button onClick={this.enableEditField} className="edit-review-btn" >Edit</button>
-                                 <button onClick={this.deleteReview} on className="edit-review-btn" >Delete</button>
+                                 <button onClick={this.enableEditField} className="footer-review-btn" >Edit</button>
+                                 <button onClick={this.deleteReview} on className="footer-review-btn" >Delete</button>
                                 </div>
                                 :
                                   <div></div>

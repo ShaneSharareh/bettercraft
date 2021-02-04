@@ -452,6 +452,7 @@
     margin-top: 54px;
     font-family: "Guardian-EgypTT",
     serif;
+    min-width: 50%;
     -webkit-font-smoothin: antialiased;
     }
 
@@ -466,14 +467,10 @@
     cursor: pointer;
     border-radius: 24px;
     font-weight: bold;
-    padding-top: 17px;
-    padding-bottom: 17px;
-    padding-left: 150px;
-    padding-right: 150px;
+    padding: 16px 16px;
     font-size: 16px;
     height: 12%;
-    width: 79%;
-    /* text-align: center; */
+    width: 100%;
     outline: none;
     }
 
@@ -520,7 +517,7 @@
 
 .product-show-store{
     color: #222;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0px 6px 0px 0px
 }
 
@@ -539,77 +536,6 @@
     
 }
 
-.reviews-header{
-    font-size: 25px;
-    line-height: 42px;
-}
-
-.review-author{
- font-weight: 300;
- font-size: 13px;
- line-height: 18px;
- margin-bottom: 0px 18px;
- display: flex;
- flex-direction: row;
- justify-content: left;
- margin: 15px 15px;
-
-}
-
-.review-author a{
-    color: black;
-    font-size: 17px;
-}
-
-.review-author img {
-    height: 50px;
-    width: auto;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-.review-body{
-    font-size: 15px;
-    font-weight: 300;
-}
-
-.review-element{
-    margin-bottom: 10px;
-}
-
-.bottom-form{
-    margin-left: 51px;
-}
-
-.create-review-box{
-   width: 471px;
-   height: 105px;
-   border: -4px solid #cccccc;
-   padding: 5px;
-   background-image: url(bg.gif);
-   background-position: bottom right;
-   background-repeat: no-repeat;
-   margin-top: 22px;
-   margin-left: 2px;
-   margin-bottom: 7px;
-}
-
-.add-comment-button{
-    margin-top: 2px;
-    background: rgb(22, 22, 22);
-    border: none;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 24px;
-    font-weight: bold;
-    padding-top: 11px;
-    padding-bottom: 11px;
-    padding-left: 32px;
-    padding-right: 60px;
-    text-align: center;
-    width: 13%;
-}
 
 .shopping-cart-icon-container {
     line-height: 31px;

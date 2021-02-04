@@ -4,7 +4,7 @@ import {fetchProducts} from '../../actions/product_actions'
 
 const mapStateToProps = (state,ownProps) => ({
     products: Object.values(state.entities.products),
-    searchTerm: ownProps.match.params.searchTerm
+    searchedWord: ownProps.match.params.searchedWord
 });
 
 const mapDispatchToProps = dispatch => ({

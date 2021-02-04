@@ -12,8 +12,8 @@ class SearchIndex extends React.Component {
     }
 
     render() {
-        console.log(this.props.searchTerm)
-        let searchTerm = this.props.searchTerm
+        console.log(this.props.searchedWord)
+        let searchedWord = this.props.searchedWord
         const {products} = this.props;
         let notFoundCount = 0;
         return(
@@ -21,10 +21,9 @@ class SearchIndex extends React.Component {
             <div className="product-list">
                 {
                      products.map((product,index) => {
-                        {console.log( product.name +" === "+ searchTerm+": "+product.name.includes(searchTerm))}
-                       if ((searchTerm === "" || searchTerm == null ) ){   
+                       if ((searchedWord === "" || searchedWord == null ) ){   
                             return  <ProductIndexItem key={product.id} product={product}/>
-                       }else if(product.name.toUpperCase().includes(searchTerm.toUpperCase()) || product.store_name.toUpperCase().includes(searchTerm.toUpperCase())){
+                       }else if(product.name.toUpperCase().includes(searchedWord.toUpperCase()) || product.store_name.toUpperCase().includes(searchedWord.toUpperCase())){
                                return  <ProductIndexItem key={product.id} product={product}/>
                        }
                        else{
@@ -43,7 +42,7 @@ class SearchIndex extends React.Component {
             </div>
               {products.length === notFoundCount ?
               <div className="no-results-container">
-                        <h1>We couldn't find any results for {searchTerm}</h1>
+                        <h1>We couldn't find any results for {searchedWord}</h1>
              </div>:
              <p></p>
             }

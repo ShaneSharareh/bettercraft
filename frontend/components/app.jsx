@@ -22,7 +22,7 @@ import {
 
 
 const App = () => (
-  <div>
+  <div className="body-container">
    <Modal />
     <div className ="header">
        <Link className ="logo" to="/">BetterCraft</Link>
@@ -52,7 +52,7 @@ const App = () => (
      
       <Switch>
         {/* Search */}
-       <Route exact path="/search/:searchTerm" component={SearchIndexContainer} />
+       <Route exact path="/search/:searchedWord" component={SearchIndexContainer} />
        {/* Categories */}
        <Route exact path="/Holiday-Shop" component={ProductIndexContainer} />
        <Route exact path="/Jewelry-Accessories" component={ProductIndexContainer} />
@@ -69,8 +69,11 @@ const App = () => (
        {/*  retrieve all items */}
        <Route exact path="/" component={ProductIndexContainer } />
        <Redirect to="/" />
+
       </Switch>
+      
     </div>
+    
     {/* <AuthRoute exact path="/signup" component={SignupContainer} />
     <AuthRoute exact path="/login" component={LoginContainer} /> */}
 

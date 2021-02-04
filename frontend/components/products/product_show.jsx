@@ -45,7 +45,7 @@ class ProductShow extends React.Component {
                         <p className = "product-show-price">{product.price}</p>
                       <form onSubmit={this.handleAddCart}>
                         {this.props.currentUserSession.id === null ? 
-                            <button className = "add-cart-btn" >Please Sign In to Add to Cart</button>
+                            <button className = "add-cart-btn" onClick={() => this.props.openModal('login')} >Please Sign In to Add to Cart</button>
                                 :
                             <input className = "add-cart-btn" type="submit" value={this.props.cartedItemsErrors.length > 0 ? this.props.cartedItemsErrors :  "Add to Cart"}/>
                         }

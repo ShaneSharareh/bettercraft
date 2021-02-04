@@ -49,7 +49,7 @@ class OrderSummary extends React.Component {
                                 <button className = "print-btn" onClick={window.print}> <i className="fa fa-print"></i> Print </button>
                             </div>
                         </div>
-                        <div className="order-summary-instructions">
+                        <div className="order-summary-instructions-container">
                             <p> Please keep the information above for your reference. We also sent a confirmation of the following to
                                 your email, {this.props.currentUser.email}. Contact the store for further shipment instructions
                             </p>

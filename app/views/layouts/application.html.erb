@@ -13,9 +13,43 @@
 </style>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="//db.onlinewebfonts.com/c/08d78e70bb7fc6ae5cdd413384b799fb?family=Guardian+Egyptian+Web+Bold" rel="stylesheet" type="text/css"/>
+
   </head>
 
-  <body>
+  <body class="body-container">
     <%= yield %>
+    <footer class="footer-container" >
+    <div class ="main-footer">
+      <div class="main-footer-heading">
+        <h2>What is BetterCraft? </h2>
+      </div>
+      <div class="main-footer-body">
+        <p>BetterCraft simulates an <a class="etsy-link" href="https://etsy.com/">Etsy</a> clone that allows users to put their creative hobbies into marketing. Likewise allowing users to purchase homemade/customizable products of their choosing! 
+        Products vary often from general, to seasonal and romantic gifts. No matter the reason or the season, good chance you will find the model of that product you're looking for!</p>
+        <p>This Fullstack Project was implemented using JavaScript/React/Redux and Ruby On Rails</p>
+      </div>
+    </div>
+    <div class="main-footer-contact-section">
+        <div class="main-footer-heading">
+        <h2>Lets Connect!</h2>
+      </div>
+        <div class=social-links>
+          <a href=https://github.com/ShaneSharareh target=_blank>
+            <i class="fa fa-github fa-inverse"></i> 
+          </a>
+          <a href=www.linkedin.com/in/shanesharareh target=_blank>
+            <i class="fa fa-linkedin fa-inverse">
+            </i> 
+          </a>
+           <a href=https://angel.co/u/shane-sharareh target=_blank>
+            <i class="fa fa-angellist fa-inverse">
+            </i>
+          </a>
+          </div>
+      </div>
+    </div>
+    </footer>
   </body>
+  
 </html>
