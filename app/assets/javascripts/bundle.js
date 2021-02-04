@@ -2791,7 +2791,7 @@ var UserForm = /*#__PURE__*/function (_React$Component) {
     value: function handleGuestLogin(e) {
       var _this$props$processUs;
 
-      this.props.processUser((_this$props$processUs = {}, _defineProperty(_this$props$processUs, 'username', "guest1"), _defineProperty(_this$props$processUs, 'email', "guest1@example.com"), _defineProperty(_this$props$processUs, 'password', "password"), _this$props$processUs)).then(this.props.closeModal);
+      this.props.processUser((_this$props$processUs = {}, _defineProperty(_this$props$processUs, 'username', "guest"), _defineProperty(_this$props$processUs, 'email', "guest@example.com"), _defineProperty(_this$props$processUs, 'password', "password"), _this$props$processUs)).then(this.props.closeModal);
     }
   }, {
     key: "renderErrors",
