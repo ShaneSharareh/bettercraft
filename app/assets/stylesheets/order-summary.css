@@ -16,9 +16,23 @@
 
 .order-summary-close-btn{
    background: none;
+   outline: none;
    border: none;
    font-size: 31px;
+   cursor: pointer;
    color: #BB481C;
+}
+
+.order-summary-close-btn:hover {
+  
+    font-size: 37px;
+    color: #af441a;
+}
+
+.order-summary-close-btn:active {
+
+    font-size: 31px;
+    color: #64260d;
 }
 
 .order-summary-container{
@@ -81,7 +95,20 @@
         padding: 6px 18px;
         font-size: 20px;
         background-color: white;
+        cursor: pointer;
+        outline: none;
 }
+
+.print-btn:hover {
+    padding: 7px 19px;
+    background-color: #cecece;
+}
+
+.print-btn:active {
+    padding: 6px 18px;
+    background-color: #c2c1c1;
+}
+
 
 .print-btn i{
     color: #bb4817;
@@ -124,6 +151,16 @@
 .anti-link-style {
     color: white;
     text-decoration: none;
+}
+
+.continue-shopping-btn:hover {
+    background: rgb(37, 37, 37);
+    padding: 20px 6px;
+}
+
+.continue-shopping-btn:active {
+    background: rgb(66, 66, 66);
+    padding: 19px 5px;
 }
 
 .order-summary-instructions-container{

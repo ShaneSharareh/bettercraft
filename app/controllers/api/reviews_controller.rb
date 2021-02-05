@@ -12,7 +12,7 @@ class Api::ReviewsController < ApplicationController
         if @review.save 
             render :show
         else 
-            render json: @review.errors.full_messages, status: 401
+            render json: ["Please enter your review"], status: 400
         end
     end
 
@@ -21,7 +21,7 @@ class Api::ReviewsController < ApplicationController
         if @review.update(reviews_params)
             render :show
         else
-            render json: @review.errors.full_messages, status: 400
+               render json: ["Please enter your review"], status: 400
         end
 
     end

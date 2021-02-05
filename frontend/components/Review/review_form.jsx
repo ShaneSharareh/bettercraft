@@ -1,3 +1,4 @@
+import { isFunction } from 'jquery';
 import React from 'react';
 
 /*
@@ -16,7 +17,8 @@ class ReviewForm extends React.Component {
         this.state ={
             product_id: this.props.productId,
             reviewer_id: this.props.currentUserId,
-            body: ""
+            body: "",
+            error: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -26,17 +28,32 @@ class ReviewForm extends React.Component {
             this.setState({[field]: e.currentTarget.value})
         }
     }
+           
+    componentWillUnmount() {
+        this.props.removeError()
+    }
+
 
     handleSubmit(e){
+        // Error handling in the frontend
         e.preventDefault();
-
-        this.props.createReview(this.state)
+        if(this.state.body ===""){
+             this.setState({error: "Please enter a review"})
+        }else{
+            if(this.state.error !==""){
+                this.setState({error: ""})
+            }
+            this.props.createReview(this.state)
+        }
     }
     render(){
         return ( 
             this.props.currentUserSession.id !== null ?
             <form onSubmit={this.handleSubmit}>
-            
+              <div className="add-comment-btn-container">
+                   <p className="errors-review">
+                        {this.state.error}
+                    </p>
                 <label>
                     <textarea className = "create-review-box"
                     value = {this.state.body}
@@ -44,7 +61,7 @@ class ReviewForm extends React.Component {
                     placeholder= "Write a review!"
                     />
                 </label>
-                <div>
+              
                 <input className="add-comment-button" type="submit" value= "Add Review"/>
                     
                 </div>

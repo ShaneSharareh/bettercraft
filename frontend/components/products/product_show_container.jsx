@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
         product: state.entities.products[ownProps.match.params.productId],
         reviews:  Object.values(state.entities.reviews),
         currentUserSession: state.session,
-        cartedItemsErrors: state.entities.cartedItemsErrors
+        cartedItemsErrors: state.entities.cartedItemsErrors,
 
 });
 

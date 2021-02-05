@@ -66,20 +66,20 @@
 }
 
 .create-review-box {
-    width: 471px;
-    height: 105px;
-    border: -4px solid #cccccc;
-    padding: 5px;
-    background-image: url(bg.gif);
-    background-position: bottom right;
-    background-repeat: no-repeat;
-    margin-top: 22px;
-    margin-left: 2px;
-    margin-bottom: 7px;
+   width: 50%;
+   height: 105px;
+   border: -4px solid #cccccc;
+   padding: 5px;
+   background-image: url(bg.gif);
+   background-position: bottom right;
+   background-repeat: no-repeat;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 7px;
+   font-size: 18px;
 }
 
 .add-comment-button {
-    margin-top: 2px;
     background: rgb(22, 22, 22);
     border: none;
     text-decoration: none;
@@ -92,8 +92,21 @@
     padding-left: 32px;
     padding-right: 60px;
     text-align: center;
-    width: 13%;
+    width: 50%;
+    outline: none;
+
 }
+
+.add-comment-button:hover {
+    background: rgb(44, 44, 44);
+ 
+}
+
+.add-comment-button:active {
+    background: rgb(71, 71, 71);
+    
+}
+
 
 .review-update-btn{
     
@@ -111,4 +124,20 @@
     line-height: 18px;
     color: #565454;
     
+}
+
+.add-comment-btn-container{
+   display: flex;
+   flex-direction: column;
+   align-items: left;
+  margin-top: 2px;
+
+}
+
+
+.errors-review {
+    color: #DD0000;
+    list-style-type: none;
+    padding: 2px;
+    font-size: 18px;
 }

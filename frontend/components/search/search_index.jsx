@@ -11,6 +11,8 @@ class SearchIndex extends React.Component {
 
     }
 
+ 
+
     render() {
         console.log(this.props.searchedWord)
         let searchedWord = this.props.searchedWord
@@ -42,7 +44,7 @@ class SearchIndex extends React.Component {
             </div>
               {products.length === notFoundCount ?
               <div className="no-results-container">
-                        <h1>We couldn't find any results for {searchedWord}</h1>
+                        <h1>We couldn't find any results for {searchedWord}...</h1>
              </div>:
              <p></p>
             }

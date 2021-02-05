@@ -1,7 +1,6 @@
 .no-results-container{
-    justify-content: center;
     text-align: center;
-    font-size: 30px;
+    font-size: 44px;
     color: grey;
-    margin: 0 auto;
+    margin: 75px auto;
 }
