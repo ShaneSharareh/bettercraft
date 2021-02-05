@@ -54,7 +54,7 @@ class CartedItems extends React.Component {
         return(
             <div className="cart-container">
             <div className="carted-items-container">
-
+                
                 <div className ="cart-count"><h1>{Object.values(cartedItems).length} items in your cart</h1></div>
                 {
                     cartedItems ?

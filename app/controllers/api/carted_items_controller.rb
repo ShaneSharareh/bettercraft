@@ -22,6 +22,7 @@ class Api::CartedItemsController < ApplicationController
           render '/api/carted_items/index'
         else
           puts "save unsuccessful"
+        
           render json: @carted_item.errors.full_messages, status: 422
 
         end

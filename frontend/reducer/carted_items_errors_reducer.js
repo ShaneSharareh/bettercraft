@@ -1,12 +1,12 @@
-import {RECEIVE_ERRORS, REMOVE_ERROR} from '../actions/carted_item.actions'
+import {RECEIVE_CARTED_ITEM_ERRORS, REMOVE_CARTED_ITEM_ERRORS} from '../actions/carted_item.actions'
 
 const cartedItemsErrorsReducer = (oldstate = [], action) => {
     Object.freeze(oldstate);
 
     switch (action.type){
-        case RECEIVE_ERRORS:
+        case RECEIVE_CARTED_ITEM_ERRORS:
             return action.errors;
-        case REMOVE_ERROR:
+        case REMOVE_CARTED_ITEM_ERRORS:
             return [];
         default:
             return oldstate
