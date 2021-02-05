@@ -1,0 +1,15 @@
+.fixed-header{
+   
+}
+.header-content{
+    position: fixed;
+ background-color: white;
+    top:0;
+    width: 100%;
+
+}
+.empty-div{
+    height: 154.69px;
+    position: relative;
+    
+}

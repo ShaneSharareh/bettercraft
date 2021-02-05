@@ -23,6 +23,10 @@ import {
 
 const App = () => (
   <div className="body-container">
+    <div className="fixed-header">
+      <div className="empty-div"></div>
+    
+    <div className="header-content">
    <Modal />
     <div className ="header">
        <Link className ="logo" to="/">BetterCraft</Link>
@@ -47,7 +51,8 @@ const App = () => (
         <li><a href="#/Gifts-Gift-Cards">Gifts & Gift Cards</a></li>
       </ul>
     </div>
-    
+    </div>
+  </div>
     <div className="container">
      
       <Switch>
