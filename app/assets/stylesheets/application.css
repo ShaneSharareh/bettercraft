@@ -394,6 +394,14 @@
 
 }
 
+.product-element img:hover {
+     box-shadow: 0 4px 20px rgba(8, 8, 8, 5);
+}
+
+.product-element-click-container {
+    text-decoration: none;
+
+}
 .product-element-title {
     text-decoration: none;
 
@@ -411,6 +419,7 @@
 
 .product-element-price {
   font-size: 16px;
+  color: black;
 }
 
 .product-element p{

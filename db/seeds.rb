@@ -293,7 +293,7 @@ product25 = Product.create!(
 product26 = Product.create!(
     name: "Gem Earrings",
     description: "Hand Crafted Gem Earrings, donations go to helping wildlife",
-    price: "$25",
+    price: "$25.00",
     store_name: "BeJeweled", 
     image_name: "https://dtpmhvbsmffsz.cloudfront.net/posts/2016/10/04/57f491772ba50a41d9002c28/m_57f491782ba50a41d9002c2a.jpg",
     category: "Jewelry-Accessories",
@@ -303,7 +303,7 @@ product26 = Product.create!(
 product27 = Product.create!(
     name: "Hannukah Candles",
     description: "Shabbot Shalom! These are Hannukah Candles for a nice Happy Hannukah with the family",
-    price: "$12",
+    price: "$12.00",
     store_name: "HannukahLove", 
     image_name: "https://sunbeamcandles.com/wp-content/uploads/2015/11/p-1043-bznat-minitapers-hannukah-wmenorah-600.jpg",
     category: "Holiday-Shop",
@@ -330,65 +330,65 @@ product29 = Product.create!(
     shipping: "FREE"
 )
 
-# product9 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product30 = Product.create!(
+    name: "Trooper Scooper- Iron Maiden Mug",
+    description: "This is another one of our furry band merch collections. Not only can you customize your pet in this Trooper Album artwork, but you can get it as a mug! Upon purchase, shoot us an email with a clear picture of your pet, and let us do the rest!",
+    price: "$15.00",
+    store_name: "RockAnimalLovers", 
+    image_name: "https://m.media-amazon.com/images/I/51qw8wDWCyL._AC_SL1200_.jpg",
+    category: "Toys-Entertainment",
+    shipping: "FREE"
+)
 
-# product9 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product31 = Product.create!(
+    name: "Goodbye Buzz Painting",
+    description: "A very detailed painting of Woody from Toy Story saying goodbye to his friend Buzz as he flys off to fight Zerg and save the toy plannet",
+    price: "$35.00",
+    store_name: "PixarPaintings", 
+    image_name: "https://render.fineartamerica.com/images/rendered/default/framed-print/images/artworkimages/medium/1/woody-of-toy-story-paul-meijering.jpg?imgWI=8&imgHI=8&sku=CRQ13&mat1=PM918&mat2=&t=2&b=2&l=2&r=2&off=0.5&frameW=0.875",
+    category: "Art-Collectibles",
+    shipping: "PAID"
+)
 
-# product9 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product32 = Product.create!(
+    name: "Glitter Pens",
+    description: "Glitter pens in the finest shape and form used to create very precise glitter projects. Comes with an adjustable frame to give a nice border, if you need your borders for your images glittered up",
+    price: "$7.00",
+    store_name: "twiceasniceletter", 
+    image_name: "https://www.wikihow.com/images/thumb/4/41/Organize-Craft-Supplies-Step-8-Version-2.jpg/v4-460px-Organize-Craft-Supplies-Step-8-Version-2.jpg.webp",
+    category: "Craft-Supplies",
+    shipping: "FREE"
+)
 
-# product9 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product33 = Product.create!(
+    name: "Office Customizable Gift Card",
+    description: "Customize your gift cards with your favorite office characters and office lines! After buying our product, send us a detailed email of how you would like your card made",
+    price: "$30.00",
+    store_name: "ALittleStitious", 
+    image_name: "https://images-na.ssl-images-amazon.com/images/I/81ZaXdO2T%2BL._SX466_.jpg",
+    category: "Gifts-Gift-Cards",
+    shipping: "FREE"
+)
 
-# product9 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product34 = Product.create!(
+    name: "Customizable Cartoon Holiday Picture Frame",
+    description: "Get that holiday photo with your signicant other or your family as cartoon characters!! Upon purchasing our products, send an email with your favorite photo and we will make sure you are satisfied",
+    price: "$12.00",
+    store_name: "TizTheArt", 
+    image_name: "https://cdn0.weddingwire.com/articles/images/3/9/4/9/img_9493/il-1588xn-2632841387-dbx8.jpg",
+    category: "Holiday-Shop",
+    shipping: "FREE"
+)
 
-# product9 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product35 = Product.create!(
+    name: "Personalized Christmas Ornaments",
+    description: "Personalize your christmas ornaments with your family, pets, or your significant other. Purchase this and send us an email with your photos! Make the Holiday right",
+    price: "$35.00",
+    store_name: "customas", 
+    image_name: "https://cdn.thewirecutter.com/wp-content/uploads/2019/11/gift-guide-pers.ornaments-1024.jpg",
+    category: "Holiday-Shop",
+    shipping: "PAID"
+)
 
 # product9 = Product.create!(
 #     name: "",
