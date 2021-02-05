@@ -390,7 +390,37 @@ product35 = Product.create!(
     shipping: "PAID"
 )
 
-# product9 = Product.create!(
+product36 = Product.create!(
+    name: "Woodburned Broncos Artwork",
+    description: "Woodburned Broncos artwork made for all you broncos fans out there with a unique addition of lion and wolf",
+    price: "$50.00",
+    store_name: "NozProductions", 
+    image_name: "/images/woodburn.png",
+    category: "Art-Collectibles",
+    shipping: "FREE"
+)
+
+product37 = Product.create!(
+    name: "Mens Striped Sweater",
+    description: "Going for a mix of that grunge and hipster trend?! Get this mens multicolor striped sweater",
+    price: "$35.00",
+    store_name: "TrenderBender", 
+    image_name: "https://i.pinimg.com/originals/cf/de/6d/cfde6d890ea5ea7f037091c04c320028.jpg",
+    category: "Clothing-Shoes",
+    shipping: "FREE"
+)
+
+product38 = Product.create!(
+    name: "Mens Beanie and Jean Jacket",
+    description: "Beanie & Jean Jacket set to give that edgy hipster vibe you've been looking for",
+    price: "$30",
+    store_name: "TrenderBender", 
+    image_name: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbZ7-RINe5O0sV2FgBR0f0oH_U2HkDrEJLCg&usqp=CAU",
+    category: "Clothing-Shoes",
+    shipping: "PAID"
+)
+
+# product38 = Product.create!(
 #     name: "",
 #     description: "",
 #     price: "",
@@ -400,7 +430,7 @@ product35 = Product.create!(
 #     shipping: ""
 # )
 
-# product9 = Product.create!(
+# product38 = Product.create!(
 #     name: "",
 #     description: "",
 #     price: "",
@@ -410,7 +440,8 @@ product35 = Product.create!(
 #     shipping: ""
 # )
 
-# product9 = Product.create!(
+
+# product38 = Product.create!(
 #     name: "",
 #     description: "",
 #     price: "",
@@ -420,6 +451,27 @@ product35 = Product.create!(
 #     shipping: ""
 # )
 
+
+# product38 = Product.create!(
+#     name: "",
+#     description: "",
+#     price: "",
+#     store_name: "", 
+#     image_name: "",
+#     category: "",
+#     shipping: ""
+# )
+
+
+# product38 = Product.create!(
+#     name: "",
+#     description: "",
+#     price: "",
+#     store_name: "", 
+#     image_name: "",
+#     category: "",
+#     shipping: ""
+# )
 
 
 # #id	integer	not null, primary key

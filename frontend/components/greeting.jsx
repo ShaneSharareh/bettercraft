@@ -6,9 +6,10 @@ import {  withRouter} from 'react-router-dom';
 const Greeting = ({currentUser, logout, openModal}) => {
     const logoutUser =() =>{
         //code to reroute user
-        logout().then(
-            ()=> {  location.href='#/'}
-        )
+        logout()
+        // .then(
+        //     ()=> {  location.href='#/'}
+        // )
 
     }
     const authLinks = () =>(

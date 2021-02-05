@@ -23,6 +23,12 @@ class CartedItems extends React.Component {
 
     }
 
+    componentDidUpdate(){
+        if(this.props.currentUserSession.id === null){
+            location.href='#/'
+        }
+    }
+
 
     closeModal(){
         //  this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)

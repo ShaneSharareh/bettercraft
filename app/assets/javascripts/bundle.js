@@ -1492,6 +1492,13 @@ var CartedItems = /*#__PURE__*/function (_React$Component) {
       this.props.fetchCartedItems();
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      if (this.props.currentUserSession.id === null) {
+        location.href = '#/';
+      }
+    }
+  }, {
     key: "closeModal",
     value: function closeModal() {
       //  this.props.removeAllCartItems(Object.values(this.props.cartedItems)[0].cart_id)
@@ -1710,9 +1717,9 @@ var Greeting = function Greeting(_ref) {
 
   var logoutUser = function logoutUser() {
     //code to reroute user
-    logout().then(function () {
-      location.href = '#/';
-    });
+    logout(); // .then(
+    //     ()=> {  location.href='#/'}
+    // )
   };
 
   var authLinks = function authLinks() {
