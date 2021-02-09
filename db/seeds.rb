@@ -420,15 +420,59 @@ product38 = Product.create!(
     shipping: "PAID"
 )
 
-# product38 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product39 = Product.create!(
+    name: "Popout Giftcard",
+    description: "Sick of giving your significant other/best friend regular last minute cards? Take a few days ahead and give them a POP out card! Shoot us a message with the specific card of your customization",
+    price: "$30.00",
+    store_name: "CoolStoreCardsBro", 
+    image_name: "https://i.pinimg.com/originals/6c/f7/f5/6cf7f5dc8958493c9be2c7621f905bb1.jpg",
+    category: "Gifts-Gift-Cards",
+    shipping: "FREE"
+)
+
+product40 = Product.create!(
+    name: "Christmas Tree Ornament Bird",
+    description: "Christmas Tree Ornament Bird Felt Decoration",
+    price: "$30.00",
+    store_name: "ForLoveDove", 
+    image_name: "https://i.pinimg.com/236x/95/96/0f/95960f38154d7ca7e9ac55014afbd1e6.jpg",
+    category: "Holiday-Shop",
+    shipping: "FREE"
+)
+
+
+product41 = Product.create!(
+    name: "Peter Pan Artwork",
+    description: "Creative Peter Pan artwork for those who love and cherish the classic disney cartoon",
+    price: "$50.00",
+    store_name: "NozProductions", 
+    image_name: "/images/peterpan.jpg",
+    category: "Art-Collectibles",
+    shipping: "FREE"
+)
+
+
+product42 = Product.create!(
+    name: "Mick Jagger Artwork",
+    description: "Mick Jagger Painting to hang on your wall for those classic rock and Rolling Stones lover",
+    price: "$50.00",
+    store_name: "NozProductions", 
+    image_name: "/images/jagger.jpg",
+    category: "Art-Collectibles",
+    shipping: "FREE"
+)
+
+
+product43 = Product.create!(
+    name: "Cozy Chair and Welcome Mat Set",
+    description: "Cozy Chair and Welcome Mat to aid to a comfortable yet rich way of living",
+    price: "$150.00",
+    store_name: "LivingComfort", 
+    image_name: "https://media3.s-nbcnews.com/j/newscms/2020_11/1548376/cozy-home-today-main-200313_58fcbcf280383a99e90d9d236fd9cfa6.fit-760w.jpg",
+    category: "Home-Living",
+    shipping: "PAID"
+)
+
 
 # product38 = Product.create!(
 #     name: "",
@@ -473,6 +517,37 @@ product38 = Product.create!(
 #     shipping: ""
 # )
 
+
+# product38 = Product.create!(
+#     name: "",
+#     description: "",
+#     price: "",
+#     store_name: "", 
+#     image_name: "",
+#     category: "",
+#     shipping: ""
+# )
+
+
+# product38 = Product.create!(
+#     name: "",
+#     description: "",
+#     price: "",
+#     store_name: "", 
+#     image_name: "",
+#     category: "",
+#     shipping: ""
+# )
+
+# product38 = Product.create!(
+#     name: "",
+#     description: "",
+#     price: "",
+#     store_name: "", 
+#     image_name: "",
+#     category: "",
+#     shipping: ""
+# )
 
 # #id	integer	not null, primary key
 # # product_id	integer	not null, indexed, foreign key
