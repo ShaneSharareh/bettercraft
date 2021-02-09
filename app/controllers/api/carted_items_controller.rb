@@ -23,7 +23,8 @@ class Api::CartedItemsController < ApplicationController
         else
           puts "save unsuccessful"
         
-          render json: @carted_item.errors.full_messages, status: 422
+          # render json: @carted_item.errors.full_messages, status: 422
+          render json: ["Item Already Added To Cart!"], status: 422
 
         end
     end

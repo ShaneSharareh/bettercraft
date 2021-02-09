@@ -39,7 +39,6 @@ class ProductShow extends React.Component {
             
             product ?
             <div className="product-show">
-                {console.log("pug " + this.state.price)}
                 <div className ="product-show-content">
                     <div className="product-show-image-container">
                         <img src={`${product.image_name}`} alt=""/>
