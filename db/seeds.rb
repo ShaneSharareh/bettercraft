@@ -474,48 +474,48 @@ product43 = Product.create!(
 )
 
 
-# product38 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product44 = Product.create!(
+    name: "Customizable inflatable toys",
+    description: "Personalize an inflatable toy with your face in it",
+    price: "$45.00",
+    store_name: "ToyTricks", 
+    image_name: "https://cdn.trendhunterstatic.com/thumbs/customized-inflatables.jpeg",
+    category: "Toys-Entertainment",
+    shipping: "FREE"
+)
 
 
-# product38 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product45 = Product.create!(
+    name: "Coldplay Lego Figures",
+    description: "Ever want a band to not only visit your town, but also your lego world? Have Coldplay be that band!",
+    price: "$35.00",
+    store_name: "SimonSings", 
+    image_name: "https://i.pinimg.com/originals/45/2a/03/452a03ace3a16780b0a5c3f7a371a9af.jpg",
+    category: "Toys-Entertainment",
+    shipping: "FREEE"
+)
 
 
-# product38 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product46 = Product.create!(
+    name: "Grohl Action Figure",
+    description: "Everlong Grohl Action Figure For Foo Fighter Fans",
+    price: "$12.00",
+    store_name: "SimonSings", 
+    image_name: "https://preview.redd.it/0agrnvbaahs51.jpg?width=3024&format=pjpg&auto=webp&s=c7224e74297a0ff39e0432956cc7565db074db5e",
+    category: "Toys-Entertainment",
+    shipping: "FREE"
+)
 
 
-# product38 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product47 = Product.create!(
+    name: "Korn's First Ever Vinyl",
+    description: "For all you OG Korn fans, heres the VERY first vinyl for Korn to release. Are you ready?!!!!!",
+    price: "$55.00",
+    store_name: "ReadyRiseMerch", 
+    image_name: "https://cdn.shopify.com/s/files/1/0105/4542/products/korn_1200x.jpg?v=1571263853",
+    category: "Toys-Entertainment",
+    shipping: "PAID"
+)
 
 
 # product38 = Product.create!(
