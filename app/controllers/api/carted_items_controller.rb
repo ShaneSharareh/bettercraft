@@ -10,6 +10,7 @@ class Api::CartedItemsController < ApplicationController
         @carted_item = CartedItem.new(carted_items_params);
         #  puts "current user: #{current_user.cart}"
         @carted_item.cart_id = current_user.cart.id
+        #sets quantity to 1
         @carted_item.quantity = 1
 
 
