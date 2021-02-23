@@ -518,26 +518,26 @@ product47 = Product.create!(
 )
 
 
-# product38 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product48 = Product.create!(
+    name: "Breakfast Club's Judd Nelson Sketch",
+    description: "Detailed sketch of Judd Nelsons character John Bender in The Breakfast Club",
+    price: "$50.00",
+    store_name: "NozProductions", 
+    image_name: "/images/breakfast.jpg",
+    category: "Art-Collectibles",
+    shipping: "FREE"
+)
 
 
-# product38 = Product.create!(
-#     name: "",
-#     description: "",
-#     price: "",
-#     store_name: "", 
-#     image_name: "",
-#     category: "",
-#     shipping: ""
-# )
+product49 = Product.create!(
+    name: "",
+    description: "",
+    price: "",
+    store_name: "", 
+    image_name: "",
+    category: "",
+    shipping: ""
+)
 
 # product38 = Product.create!(
 #     name: "",
