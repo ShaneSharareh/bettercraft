@@ -67,7 +67,7 @@ class ReviewIndexItem extends React.Component {
 
         <div className="review-element">
              <div className="review-author">
-                 <img  src={`http://placekitten.com/${this.props.review.reviewer_id}?100x100`} alt=""/>
+                 <img  src={`https://robohash.org/${this.props.review.reviewer_id}`} alt=""/>
                <div>
                    <div className="review-username-date-created">
                     <a href="#" >{this.props.reviewUser.username}</a>

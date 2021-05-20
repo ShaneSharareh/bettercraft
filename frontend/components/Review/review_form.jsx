@@ -44,6 +44,7 @@ class ReviewForm extends React.Component {
                 this.setState({error: ""})
             }
             this.props.createReview(this.state)
+            this.setState({body: ""})
         }
     }
     render(){
