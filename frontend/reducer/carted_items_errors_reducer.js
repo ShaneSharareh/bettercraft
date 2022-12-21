@@ -9,7 +9,7 @@ const cartedItemsErrorsReducer = (oldstate = [], action) => {
         case REMOVE_CARTED_ITEM_ERRORS:
             return [];
         default:
-            return oldstate
+            return oldstate //test
     }
 }
 
