@@ -9,7 +9,8 @@ const cartedItemsErrorsReducer = (oldstate = [], action) => {
         case REMOVE_CARTED_ITEM_ERRORS:
             return [];
         default:
-            return oldstate //test
+            return oldstate //testbundle lock --add-platform x86_64-linux
+
     }
 }
 
