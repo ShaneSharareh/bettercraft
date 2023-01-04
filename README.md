@@ -37,12 +37,8 @@ BetterCraft is an Etsy clone that allows users to put their creative hobbies int
 ![AddingReview](add-review.png)
 
 
-## Features Being Worked on
+## To Run Locally
 
-* Shopping Cart Functionality 
+* In your terminal, run npm install
 
-* Editing/Deleting Reviews
-
-* Feature To Create A Store And Sell Items 
-
-* Raitings
+* Next run "rails s"
