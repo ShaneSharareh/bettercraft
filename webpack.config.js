@@ -5,7 +5,7 @@ module.exports = {
   entry: './frontend/better_craft_index.jsx',
   output: {
     path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
