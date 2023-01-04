@@ -696,6 +696,9 @@ var ReviewForm = /*#__PURE__*/function (_React$Component) {
         }
 
         this.props.createReview(this.state);
+        this.setState({
+          body: ""
+        });
       }
     }
   }, {
@@ -853,7 +856,7 @@ var ReviewIndexItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "review-author"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-        src: "http://placekitten.com/".concat(this.props.review.reviewer_id, "?100x100"),
+        src: "https://robohash.org/".concat(this.props.review.reviewer_id),
         alt: ""
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "review-username-date-created"
@@ -2974,6 +2977,7 @@ var cartedItemsErrorsReducer = function cartedItemsErrorsReducer() {
 
     default:
       return oldstate;
+    //testbundle lock --add-platform x86_64-linux
   }
 };
 
